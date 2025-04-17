@@ -22,19 +22,22 @@
                     <div class="flex items-center justify-center bg-[#FFFADD] rounded-[40px] shadow-md w-[523px] h-[50px]">
                     <ul class="flex space-x-6 text-gray-800">
                         <li>
-                            <a href="#" class="hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-lg transition duration-300">Home</a>
+                            <a href="#" class="hover:bg-gray-200 hover:text-gray-900 px-2 py-2 rounded-lg transition duration-300">Home</a>
                         </li>
                         <li>
-                            <a href="#" class="hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-lg transition duration-300">Menu</a>
+                            <a href="#" class="hover:bg-gray-200 hover:text-gray-900 px-2 py-2 rounded-lg transition duration-300">Menu</a>
                         </li>
                         <li>
-                            <a href="#" class="hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-lg transition duration-300">Order</a>
+                            <a href="#" class="hover:bg-gray-200 hover:text-gray-900 px-2 py-2 rounded-lg transition duration-300">Order</a>
                         </li>
                         <li>
-                            <a href="#" class="hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-lg transition duration-300">Contact</a>
+                            <a href="#" class="hover:bg-gray-200 hover:text-gray-900 px-2 py-2 rounded-lg transition duration-300">Catering</a>
                         </li>
                         <li>
-                            <a href="#" class="hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-lg transition duration-300">About</a>
+                            <a href="#" class="hover:bg-gray-200 hover:text-gray-900 px-2 py-2 rounded-lg transition duration-300">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#" class="hover:bg-gray-200 hover:text-gray-900 px-2 py-2 rounded-lg transition duration-300">Contact Us</a>
                         </li>
                     </ul>
                     </div>
