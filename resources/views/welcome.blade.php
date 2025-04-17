@@ -9,8 +9,28 @@
 </head>
 
 <body>
-    <div class="flex items-center justify-center h-screen bg-slate-400">
-        <h1>Hello world</h1>
+
+    <div>
+
+        {{-- Navbar --}}
+        <div class="bg-slate-800 w-full h-14">
+            
+            {{-- Logo --}}
+            <img src="" alt="">
+
+            {{-- List --}}
+            <ul>
+                <li>
+                    <a href="">Home</a>
+                    <a href="">Menu</a>
+                    <a href="">Order</a>
+                    <a href="">Order</a>
+                    <a href="">Order</a>
+                </li>
+            </ul>
+        </div>
+
     </div>
 </body>
+
 </html>
