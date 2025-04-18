@@ -9,41 +9,126 @@
 </head>
 
 <body>
-
     <div>
-
-                {{-- Navbar --}}
-                <div class="bg-[#FFFADD] w-full h-40 flex items-center justify-between px-6 rounded-b-lg shadow-md">
-            
-                    {{-- Logo --}}
-                    <img src="img/logocatering.png" alt="" class="w-[143px] h-[143px] margin">
-        
-                    {{-- List --}}
-                    <div class="flex items-center justify-center bg-[#FFFADD] rounded-[40px] shadow-md w-[523px] h-[50px]">
-                    <ul class="flex space-x-6 text-gray-800">
-                        <li>
-                            <a href="#" class="hover:bg-gray-200 hover:text-gray-900 px-2 py-2 rounded-lg transition duration-300">Home</a>
-                        </li>
-                        <li>
-                            <a href="#" class="hover:bg-gray-200 hover:text-gray-900 px-2 py-2 rounded-lg transition duration-300">Menu</a>
-                        </li>
-                        <li>
-                            <a href="#" class="hover:bg-gray-200 hover:text-gray-900 px-2 py-2 rounded-lg transition duration-300">Order</a>
-                        </li>
-                        <li>
-                            <a href="#" class="hover:bg-gray-200 hover:text-gray-900 px-2 py-2 rounded-lg transition duration-300">Catering</a>
-                        </li>
-                        <li>
-                            <a href="#" class="hover:bg-gray-200 hover:text-gray-900 px-2 py-2 rounded-lg transition duration-300">About Us</a>
-                        </li>
-                        <li>
-                            <a href="#" class="hover:bg-gray-200 hover:text-gray-900 px-2 py-2 rounded-lg transition duration-300">Contact Us</a>
-                        </li>
-                    </ul>
-                    </div>
+        <div class="bg-[#FFFADD] w-full h-screen bg-cover">
+            <div class="w-full h-full bg-no-repeat top-[571px] bg-right bg-contain" style="background-image: url('img/bglogo.png');">
+                <p font-family="Poppins" text-[14px] class="absolute top-[431px] left-[106px] w-auto h-auto text-[#002]">
+                    <span> <b>Siap menemani hari Anda dengan menu spesial, praktis, dan selalu fresh!</b></span> <br>
+                    Dibuat dengan bahan berkualitas dan cita rasa terbaik, kami hadir untuk<br> 
+                    memenuhi kebutuhan kuliner Anda, baik untuk sehari-hari maupun acara<br>spesial.
+                </p>
+                {{-- kelas kiri --}}
+                <div class="relative w-full h-full">
+                    <img src="img/teksgoodtaste.png" alt="" class="absolute top-[298px] left-[106px] w-auto h-auto"> {{-- Posisi sesuai Figma --}}
                 </div>
-        
+                {{-- button ordernow --}}
+                <div class="absolute top-[551px] left-[106px] flex items-center justify-center bg-[#22668D] rounded-[55px] shadow-md w-[197px] h-[62px]">
+                    <img src="img/iconorder.png" alt="Order Icon" class="w-[46px] h-[46px] mr-2">
+                    <span class="text-white text-[16px] font-bold font-poppins">ORDER NOW</span>
+                </div>
+                {{-- end button ordernow --}}
+                {{-- kelas kanan --}}
+                <div class="absolute top-[145px] right-[50px] ">
+                    <img src="img/ayambijan.png" alt="Ayam Bijan" class="w-[388px] h-[385px]">
+                </div>
+                {{-- end kelas kanan --}}        
+
+            {{-- Navbar --}}
+                    <div class="bg-transparent w-full h-40 flex items-center justify-between px-6 rounded-b-lg fixed top-0 left-[-20px] z-50">
+                
+                        {{-- Logo --}}
+                        <img src="img/logocatering.png" alt="" class="w-[120px] h-[120px] ml-6">
+            
+                        {{-- List --}}
+                        <div class="flex items-center justify-center bg-[#FFFADD] rounded-[40px] shadow-md h-[50px]">
+                        <ul class="flex  text-gray-800 font-semibold font-inner text-[14px] px-[25px]">
+                            <li>
+                                <a href="#" class="hover:bg-[#8ECDDD] rounded-[22px] hover:text-[#002E48] px-2 py-2 rounded-lg transition duration-300">Home</a>
+                            </li>
+                            <li>
+                                <a href="#" class="hover:bg-[#8ECDDD] rounded-[22px] hover:text-[#002E48] px-2 py-2 rounded-lg transition duration-300">Menu</a>
+                            </li>
+                            <li>
+                                <a href="#" class="hover:bg-[#8ECDDD] rounded-[22px] hover:text-[#002E48] px-2 py-2 rounded-lg transition duration-300">Order</a>
+                            </li>
+                            <li>
+                                <a href="#" class="hover:bg-[#8ECDDD] rounded-[22px] hover:text-[#002E48] px-2 py-2 rounded-lg transition duration-300">Catering</a>
+                            </li>
+                            <li>
+                                <a href="#" class="hover:bg-[#8ECDDD] rounded-[22px] hover:text-[#002E48] px-2 py-2 rounded-lg transition duration-300">About Us</a>
+                            </li>
+                            <li>
+                                <a href="#" class="hover:bg-[#8ECDDD] rounded-[22px] hover:text-[#002E48] px-2 py-2 rounded-lg transition duration-300">Contact Us</a>
+                            </li>
+                        </ul>
+                        </div>
+                    </div>
+            {{-- End Navbar --}}
+            
+        </div>
+        <div class="w-full h-full bg-[#FFFADD]">
+            <div dir="rtl">
+                <div class="absolute top-[786px] left-[20px] w-[341px] h-[120px] flex items-center justify-center rounded-[19px] bg-[#C3D2C7]">
+                    <p>
+                        <span class="text-black font-[poppins] mt-4 block">Jalan Ganet Indah Blok D nomor 7<br>Tanjungpinang, Kepulauan Riau</span>
+                    </p>
+                </div>
+                <div class="absolute top-[765px] left-[-39px] w-[223px] h-[52px] flex items-center justify-center rounded-s-[19px] bg-[#22668D] opacity-80">
+                    <p font-family="Inter" text-[16px] class="text-white font-bold ml-16">
+                        <span>LOCATION</span>
+                    </p>
+                </div>
+              </div>
+              <div class="absolute top-[1000px] bg-left">
+                <img src="img/linemenu.png" alt="Line Menu" class="w-auto h-auto">
+              </div>
+            
+            {{-- Background Menu --}}
+            <div class="flex justify-center items-center gap-8 pt-[350px] pb-20 bg-[#FFFADD]">
+                {{-- Button Menu Kiri --}}
+                <div class="flex items-center">
+                    <img src="img/buttonmenukiri.png" alt="Button Kiri" class="w-auto h-auto">
+                </div>
+            
+                {{-- Menu 1 --}}
+                <div class="w-[264px] aspect-[264/363]">
+                    <img src="img/bgmenu1.png" alt="Menu 1" class="w-full h-full object-contain" />
+                </div>
+            
+                {{-- Menu 2 --}}
+                <div class="w-[264px] aspect-[264/353]">
+                    <img src="img/bgmenu2.png" alt="Menu 2" class="w-full h-full object-contain" />
+                </div>
+            
+                {{-- Menu 3 --}}
+                <div class="w-[264px] aspect-[264/363]">
+                    <img src="img/bgmenu3.png" alt="Menu 3" class="w-full h-full object-contain" />
+                </div>
+                {{-- Button Menu Kanan --}}
+                <div class="flex items-center">
+                    <img src="img/buttonmenukanan.png" alt="Button Kanan" class="w-auto h-auto">
+                </div>
+            </div>
+            {{-- End Background Menu --}}
+            {{-- Button Our Menu --}}
+            <div class="flex justify-center bg-[#FFFADD] pb-10">
+                <img src="img/buttonourmenu.png" alt="Button Our Menu" class="w-auto h-auto">
+            </div>
+            
+            {{-- footer --}}
+            <div class="mt-0 w-full h-[310px] bg-[#FFCC70]"></div>
+            <div class="w-full h-[80px] bg-[#002E48] flex items-center justify-center">
+                <div class="flex items-center">
+                    <span class="text-white font-[poppins] text-[14px]">© 2025 Rumah Catering Tanjungpinang. All rights reserved.</span>
+                </div>
+            </div>
+            {{-- end footer --}}
+
+        </div>
+        </div>
     </div>
+
+    
 </body>
 
 </html>
