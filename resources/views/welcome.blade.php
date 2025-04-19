@@ -43,22 +43,22 @@
                         <div class="flex items-center justify-center bg-[#FFFADD] rounded-[40px] shadow-md h-[50px]">
                         <ul class="flex  text-gray-800 font-semibold font-inner text-[14px] px-[25px]">
                             <li>
-                                <a href="#" class="hover:bg-[#8ECDDD] rounded-[22px] hover:text-[#002E48] px-2 py-2 rounded-lg transition duration-300">Home</a>
+                                <a href="#" class="hover:bg-[#8ECDDD] rounded-[30px] hover:text-[#002E48] px-2 py-2 rounded-lg transition duration-300">Home</a>
                             </li>
                             <li>
-                                <a href="#" class="hover:bg-[#8ECDDD] rounded-[22px] hover:text-[#002E48] px-2 py-2 rounded-lg transition duration-300">Menu</a>
+                                <a href="#" class="hover:bg-[#8ECDDD] rounded-[30px] hover:text-[#002E48] px-2 py-2 rounded-lg transition duration-300">Menu</a>
                             </li>
                             <li>
-                                <a href="#" class="hover:bg-[#8ECDDD] rounded-[22px] hover:text-[#002E48] px-2 py-2 rounded-lg transition duration-300">Order</a>
+                                <a href="#" class="hover:bg-[#8ECDDD] rounded-[30px] hover:text-[#002E48] px-2 py-2 rounded-lg transition duration-300">Order</a>
                             </li>
                             <li>
-                                <a href="#" class="hover:bg-[#8ECDDD] rounded-[22px] hover:text-[#002E48] px-2 py-2 rounded-lg transition duration-300">Catering</a>
+                                <a href="#" class="hover:bg-[#8ECDDD] rounded-[30px] hover:text-[#002E48] px-2 py-2 rounded-lg transition duration-300">Catering</a>
                             </li>
                             <li>
-                                <a href="#" class="hover:bg-[#8ECDDD] rounded-[22px] hover:text-[#002E48] px-2 py-2 rounded-lg transition duration-300">About Us</a>
+                                <a href="#" class="hover:bg-[#8ECDDD] rounded-[30px] hover:text-[#002E48] px-2 py-2 rounded-lg transition duration-300">About Us</a>
                             </li>
                             <li>
-                                <a href="#" class="hover:bg-[#8ECDDD] rounded-[22px] hover:text-[#002E48] px-2 py-2 rounded-lg transition duration-300">Contact Us</a>
+                                <a href="#" class="hover:bg-[#8ECDDD] rounded-[30px] hover:text-[#002E48] px-2 py-2 rounded-lg transition duration-300">Contact Us</a>
                             </li>
                         </ul>
                         </div>
@@ -111,12 +111,42 @@
             </div>
             {{-- End Background Menu --}}
             {{-- Button Our Menu --}}
-            <div class="flex justify-center bg-[#FFFADD] pb-10">
-                <img src="img/buttonourmenu.png" alt="Button Our Menu" class="w-auto h-auto">
+            <div class="flex justify-center bg-[#FFFADD] pb-10 ml">
+                <div class="relative">
+                    <img src="img/buttonourmenu.png" alt="Button Our Menu" class="w-auto h-auto">
+                    <span class="absolute inset-0 ml-[30px] flex items-center justify-center text-white text-[16px] font-bold font-poppins">
+                        OUR MENU
+                    </span>
+                </div>
             </div>
-            
             {{-- footer --}}
-            <div class="mt-0 w-full h-[310px] bg-[#FFCC70]"></div>
+            {{-- filepath: c:\laragon\www\catering_project\resources\views\welcome.blade.php --}}
+            <div class="mt-0 w-full h-[310px] bg-[#FFCC70] flex items-start pt-[50px]">
+                <div class="pl-[100px]">
+                    <span class="text-black font-bold font-[inter] text-[20px]">RUMAH CATERING TANJUNGPINANG</span>
+                </div>
+                <div class="pl-[80px] flex flex-col">
+                    <span class="text-black font-semibold font-[inter] text-[16px] mb-2">General</span>
+                    <a href="#" class="text-black font-[inter] text-[14px] pb-2 pl-2 hover:underline">Home</a>
+                    <a href="#" class="text-black font-[inter] text-[14px] pb-2 pl-2 hover:underline">Menu</a>
+                    <a href="#" class="text-black font-[inter] text-[14px] pb-2 pl-2 hover:underline">Order</a>
+                    <a href="#" class="text-black font-[inter] text-[14px] pb-2 pl-2 hover:underline">Catering</a>
+                    <a href="#" class="text-black font-[inter] text-[14px] pb-2 pl-2 hover:underline">About Us</a>
+                </div>
+                <div class="pl-[50px] flex flex-col">
+                    <span class="text-black font-semibold font-[inter] text-[16px] mb-2">Contact Us</span>
+                    <div class="flex items-center">
+                        <img src="img/logotelp.png" alt="" class="w-[15px] h-[15px] mr-2">
+                        <span class="text-black font-[inter] text-[14px]">(+62)81368375553</span>
+                    </div>
+                    <div class="flex items-center">
+                        <img src="img/logoemail.png" alt="" class="w-[15px] h-[15px] mr-2">
+                        <span class="text-black font-[inter] text-[14px]">endahsetyowati1971@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="w-full h-[80px] bg-[#002E48] flex items-center justify-center">
                 <div class="flex items-center">
                     <span class="text-white font-[poppins] text-[14px]">© 2025 Rumah Catering Tanjungpinang. All rights reserved.</span>
