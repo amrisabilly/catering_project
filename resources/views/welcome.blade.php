@@ -98,6 +98,11 @@
             
             {{-- Menu 1 --}}
             <div class="relative w-[264px] aspect-[264/363]">
+                <div class="absolute top-[50%] left-0 w-full text-center transform -translate-y-[50%]">
+                    <span class="text-black font-bold font-[Poppins] text-[10px] tracking-[3px]">
+                        Ayam Katsu - Sayur Capcay - Pudding
+                    </span>
+                </div>
                 <svg class="absolute top-[-75px] left-0 w-full h-full" viewBox="0 0 264 264">
                     <path id="menu1-path" d="M132,132 m-100,0 a100,100 0 1,1 200,0 a100,100 0 1,1 -200,0" fill="none" />
                     <text font-family="Poppins" font-size="14" font-weight="bold" fill="#002E48" letter-spacing="3px">
