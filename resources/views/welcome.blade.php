@@ -98,8 +98,8 @@
             
             {{-- Menu 1 --}}
             <div class="relative w-[264px] aspect-[264/363]">
-                <div class="absolute top-[50%] left-0 w-full text-center transform -translate-y-[50%]">
-                    <span class="text-black font-bold font-[Poppins] text-[10px] tracking-[3px]">
+                <div class="absolute top-[78%] left-0 w-full text-center transform -translate-y-[50%]">
+                    <span class="text-black font-bold font-[Poppins] text-[10px] tracking-[1px]">
                         Ayam Katsu - Sayur Capcay - Pudding
                     </span>
                 </div>
