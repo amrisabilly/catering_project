@@ -9,3 +9,15 @@ Route::get('/', function () {
 Route::get('/order', function () {
     return view('order');
 })->name('order');
+
+Route::get('/catering', function () {
+    return view('catering');
+});
+
+Route::get('/aboutus', function () {
+    return view('aboutus');
+});
+
+Route::get('/contactus', function () {
+    return view('contactus');
+});
