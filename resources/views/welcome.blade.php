@@ -26,9 +26,9 @@
 </style>
 <body class="flex flex-col min-h-screen" style="margin: 0; padding: 0; height: 100%">
     <div>
-        <div class="bg-transparent w-full h-40 flex items-center justify-between px-6 rounded-b-lg fixed top-0 left-[-20px] z-50">
+        <div class="bg-transparent w-full h-40 flex items-center justify-between px-6 rounded-b-lg fixed top-0 left-[-0px] z-50">
             {{-- Logo --}}
-            <img src="img/logocatering.png" alt="Logo Catering" class="w-[120px] h-[120px] ml-6">
+            <img src="img/logocatering.png" alt="Logo Catering" class="w-[100px] h-[100px] ml-6">
         </div>
         <div class="flex-grow">
             <div class="bg-[#FFFADD] w-full h-screen bg-cover">
