@@ -21,3 +21,17 @@ Route::get('/aboutus', function () {
 Route::get('/contactus', function () {
     return view('contactus');
 });
+
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+});
+
+Route::get('/admin/datasiswa', function () {
+    return view('admin.datasiswa');
+});
+
+Route::get('/admin/datapesanan', function () {
+    return view('admin.datapesanan');
+});
+
+
