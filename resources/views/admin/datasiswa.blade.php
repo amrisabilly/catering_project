@@ -16,93 +16,6 @@
 
 <body>
   @include('components.navbaradmin')
-  <!-- Header Atas -->
-  <div class="flex justify-between items-start mb-6 mt-4">
-    <div class="bg-[#FFCC70] w-[47px] h-[47px] flex items-center justify-center shadow-md rounded-full cursor-pointer"
-         @click="sidebarOpen = true">
-      <img src="/img/admin/datasiswa/option.png" alt="option" class="w-[36px] h-[36px]" />
-    </div>
-    <div class="flex items-center gap-2">
-      <span class="text-gray-800 font-bold text-[16px]">Admin</span>
-      <div class="w-[47px] h-[47px] bg-[#FFCC70] rounded-full flex items-center justify-center text-white font-bold">
-        <img src="/img/admin/datasiswa/user.png" alt="user" class="w-[31px] h-[31px]">
-      </div>
-    </div>
-  </div>
-
-  <!-- Sidebar Slide -->
-  <div
-    x-show="sidebarOpen"
-    class="fixed inset-0 z-50"
-    style="display: none;"
-  >
-    <!-- Overlay -->
-    <div
-      class="fixed inset-0 bg-black bg-opacity-40 z-40"
-      @click="sidebarOpen = false"
-      x-transition.opacity
-    ></div>
-    <!-- Sidebar -->
-    <div
-      class="fixed top-0 left-0 h-full w-[350px] bg-[#002E48] shadow-lg z-50 flex flex-col py-10 px-8"
-      x-transition:enter="transition transform duration-300"
-      x-transition:enter-start="-translate-x-full"
-      x-transition:enter-end="translate-x-0"
-      x-transition:leave="transition transform duration-300"
-      x-transition:leave-start="translate-x-0"
-      x-transition:leave-end="-translate-x-full"
-      @click.away="sidebarOpen = false"
-    >
-<!-- Sidebar -->
-
-    <nav class="flex flex-col gap-6 ">
-      <a href="#" class="flex items-center text-white text-base  hover:text-[#FFCC70] transition font-poppins font-medium mt-10">
-        <img src="/img/admin/dashboard/dashboard.png" alt="Dashboard" class="w-[30px] h-[30px] ml-6" />
-        <span class="ml-3">Dashboard</span>
-      </a>
-
-      <div class="flex items-center text-white text-base font-poppins font-medium ml-2" style="opacity: 0.6">
-        <span class="ml-6">Admin</span>
-      </div>
-
-      <a href="/datasiswa" class="flex items-center text-white text-base hover:text-[#FFCC70] transition font-poppins font-medium">
-        <img src="/img/admin/dashboard/laporan.png" alt="Data Siswa" class="w-[30px] h-[30px] ml-6" />
-        <span class="ml-4">Laporan Data Siswa</span>
-      </a>
-
-      <a href="#" class="flex items-center text-white text-base hover:text-[#FFCC70] transition font-poppins font-medium">
-        <img src="/img/admin/dashboard/laporan.png" alt="Data Pesanan" class="w-[30px] h-[30px] ml-6" />
-        <span class="ml-4">Laporan Data Pesanan</span>
-      </a>
-
-      <a href="#" class="flex items-center text-white text-base hover:text-[#FFCC70] transition font-poppins font-medium">
-        <img src="/img/admin/dashboard/laporan.png" alt="Kehadiran" class="w-[30px] h-[30px] ml-6" />
-        <span class="ml-4">Laporan Kehadiran Siswa</span>
-      </a>
-
-      <a href="#" class="flex items-center text-white text-base hover:text-[#FFCC70] transition font-poppins font-medium">
-        <img src="/img/admin/dashboard/menu.png" alt="Menu" class="w-[30px] h-[30px] ml-6" />
-        <span class="ml-4">Tambah Menu</span>
-      </a>
-
-      <div class="flex items-center text-white text-opacity-[50%] font-poppins font-medium  ml-2 mb-4" style="opacity: 0.6">
-        <span class="ml-4">Documentation</span>
-      </div>
-
-      <a href="#" class="flex items-center text-white text-base hover:text-[#FFCC70] transition font-poppins font-medium">
-        <img src="/img/admin/dashboard/download.png" alt="Download" class="w-[30px] h-[30px] ml-6" />
-        <span class="ml-4">Download</span>
-      </a>
-
-      <a href="#" class="flex items-center text-white text-base hover:text-[#FFCC70] transition font-poppins font-medium">
-        <img src="/img/admin/dashboard/logout.png" alt="Logout" class="w-[30px] h-[30px] ml-6" />
-        <span class="ml-4">Log Out</span>
-      </a>
-    </nav>
-
-    </div>
-  </div>
-
   <!-- Rectangle 1 - Judul dan Tombol -->
   <div class="bg-white rounded-xl shadow-xl px-8 py-4 flex items-center justify-between mb-6">
     <h1 class="text-2xl md:text-[28px] font-bold text-[#002E48] text-center flex-1">
@@ -117,7 +30,7 @@
 <!-- ...existing code... -->
 
 <!-- Rectangle 2 - Tabel -->
-<div class="bg-white rounded-xl shadow-xl px-6 py-4 relative">
+<div class="bg-white rounded-xl shadow-xl px-6 py-4 relative z-[-10] ">
   <div class="overflow-x-auto">
     <table id="studentTable" class="min-w-full border border-[#FBA304] text-sm text-center">
       <thead>

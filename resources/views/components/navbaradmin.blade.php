@@ -1,4 +1,4 @@
-<div x-data="{ sidebarOpen: true }" class="relative flex font-sans">
+<div x-data="{ sidebarOpen: true }" class="absolute flex font-sans bg-transparent z-0 min-h-screen">
     <!-- Sidebar -->
     <div 
         class="w-[350px] h-screen bg-[#002E48] flex-shrink-0 flex flex-col py-10 px-8 transition-transform duration-300 z-20 fixed md:static"
