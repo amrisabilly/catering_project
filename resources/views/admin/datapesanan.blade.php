@@ -1,122 +1,143 @@
-@extends('layouts.app')
-{{-- Navbar --}}
-@include('components.navbaradmin')
-{{-- End Navbar --}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laporan Data Siswa</title>
+  <script src="//unpkg.com/alpinejs" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body, * {
+      font-family: 'Poppins', sans-serif !important;
+    }
+  </style>
+</head>
 
-@section('content')
-@php
-// Tambahkan dummy data agar $orders tidak error meski tanpa controller
-$orders = [
-    (object)[
-        'date' => now(),
-        'name' => 'Budi',
-        'total' => 50000,
-        'address' => 'Jl. Mawar No. 1',
-        'status' => 'pending',
-        'note' => 'Tanpa sambal',
-        'payment_method' => 'Cash',
-        'menu' => [
-            [
-                'image' => '/img/menu/nasi-goreng.jpg',
-                'name' => 'Nasi Goreng',
-                'price' => 25000,
-                'qty' => 2,
-                'total' => 50000
-            ]
-        ]
-    ]
-];
-@endphp
-
-<div class="min-h-screen bg-yellow-50 p-6">
-    <div class="flex items-center justify-between mb-6">
-        <h1 class="text-2xl font-bold">Order History</h1>
-        <div class="flex items-center gap-2 font-semibold">
-            <span>Admin</span>
-            <div class="bg-yellow-400 rounded-full p-2">
-                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 10a4 4 0 100-8 4 4 0 000 8zm0 2c-5.333 0-8 2.667-8 4v2h16v-2c0-1.333-2.667-4-8-4z" />
-                </svg>
+<body class="bg-[#FFFADD]">
+  @include('components.navbaradmin')
+    <div class="min-h-screen bg-[#FFFADD] p-9">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-6 pl-10">
+            <h1 class="text-[20px] font-semibold">Order History</h1>
+            <div class="flex items-center gap-2">
+                <span class="text-gray-800 font-semibold text-[20px]">Admin</span>
+                <div class="w-[40px] h-[40px] bg-[#FFCC70] rounded-full flex items-center justify-center text-white font-bold">
+                    <img src="/img/admin/datasiswa/user.png" alt="user" class="w-[31px] h-[31px]">
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Pesanan List -->
-    <div class="space-y-4">
-        @foreach ($orders as $index => $order)
-        <div class="bg-white rounded-lg shadow-md p-4 transition-all duration-300">
-            <div class="flex justify-between items-center">
-                <div class="flex flex-col md:flex-row md:items-center gap-4">
+        <!-- Card Orders -->
+        <div x-data="{ open: false }" class="flex flex-col items-center space-y-2">
+            <!-- Card Order 1 -->
+            <div class="bg-white rounded-xl shadow-md mb-5 p-5 w-full max-w-6xl">
+                <div class="flex justify-between mb-2">
+                    <div class="font-semibold">Order-1</div>
+                    <div class="text-sm text-[#A3A3A3]">April 9, 2025, 08.30 AM</div>
+                </div>
+                <div class="grid grid-cols-6 space-x-10">
                     <div>
-                        <div class="font-semibold">Order-{{ $index + 1 }}</div>
-                        <div class="text-gray-400 text-sm">{{ \Carbon\Carbon::parse($order->date)->format('F j, Y, h.i A') }}</div>
+                        <div class="text-sm font-semibold text-gray-700">Name</div>
+                        <div class="font-medium">Zahirah Salsabila</div>
                     </div>
-                    <div><span class="font-semibold">Name</span><br>{{ $order->name }}</div>
-                    <div><span class="font-semibold">Total</span><br><span class="text-red-600 font-bold">Rp. {{ number_format($order->total, 0, ',', '.') }}</span></div>
-                    <div><span class="font-semibold">Delivery Address</span><br>
+                    <div>
+                        <div class="text-sm font-semibold text-gray-700">Total</div>
+                        <div class="font-medium text-red-500">Rp. 160.000</div>
+                    </div>
+                    <div class="col-span-2">
+                        <div class="text-sm font-semibold text-gray-700">Delivery Address</div>
                         <div class="flex items-center gap-1">
-                            <svg class="w-4 h-4 text-black" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M10 2a6 6 0 00-6 6c0 4.5 6 10 6 10s6-5.5 6-10a6 6 0 00-6-6zM8 9a2 2 0 114 0 2 2 0 01-4 0z"/>
-                            </svg>
-                            <span>{{ $order->address }}</span>
+                        <img src="/img/admin/datapesanan/location.png" alt="location" class="w-[20px] h-[20px]">
+                            <span class="whitespace-nowrap font-medium">Jalan Ganet, Perumahan Ganet Indah</span>
                         </div>
                     </div>
-                    <div><span class="font-semibold">Status</span><br>
-                        <div class="flex items-center gap-2 mt-1">
-                            <div class="w-4 h-4 rounded-full {{ $order->status == 'pending' ? 'bg-gray-300' : 'bg-gray-100' }}"></div>
-                            <div class="w-4 h-4 rounded-full {{ $order->status == 'processing' ? 'bg-yellow-400' : 'bg-gray-100' }}"></div>
-                            <div class="w-4 h-4 rounded-full {{ $order->status == 'completed' ? 'bg-green-500' : 'bg-gray-100' }}"></div>
+                    <div>
+                        <div class="text-sm font-semibold text-gray-700 mb-1">Status</div>
+                        <div class="flex gap-2">
+                            <div class="w-4 h-4 rounded-full bg-gray-300"></div>
+                            <div class="w-4 h-4 rounded-full bg-yellow-400"></div>
+                            <div class="w-4 h-4 rounded-full bg-green-500"></div>
+                        </div>
+                    </div>
+                    <div class="col-span-1 flex justify-end items-center">
+                        <div class="w-[40px] h-[40px] bg-[#E1E1E1] rounded-full flex items-center justify-center cursor-pointer"
+                        @click="open = !open">
+                            <img 
+                                :class="{'rotate-180': open}" 
+                                src="/img/admin/datapesanan/down.png" 
+                                alt="down" 
+                                class="w-[30px] h-[30px] transition-transform duration-200"
+                            >
                         </div>
                     </div>
                 </div>
-                <!-- Toggle Detail -->
-                <button type="button" onclick="document.getElementById('detail-{{ $index }}').classList.toggle('hidden')">
-                    <svg class="w-6 h-6 text-gray-600 transform transition-transform hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </button>
-            </div>
-
-            <!-- Detail Expand -->
-            <div id="detail-{{ $index }}" class="hidden mt-4 border-t pt-4">
-                <div class="grid md:grid-cols-3 gap-4">
-                    <div>
-                        <div class="text-gray-500 text-sm mb-1">Note</div>
-                        <p>{{ $order->note }}</p>
-                    </div>
-                    <div>
-                        <div class="text-gray-500 text-sm mb-1">Order Menu</div>
-                        @foreach ($order->menu as $item)
-                        <div class="flex items-center justify-between mb-2">
-                            <div class="flex items-center gap-2">
-                                <img src="{{ $item['image'] }}" alt="" class="w-10 h-10 rounded-full object-cover">
-                                <div>
-                                    <div class="font-semibold">{{ $item['name'] }}</div>
-                                    <div class="text-sm text-gray-500">Rp.{{ number_format($item['price'], 0, ',', '.') }} x {{ $item['qty'] }}</div>
+                <!-- Detail informasinya, muncul jika open=true -->
+                <div x-show="open" x-transition class="mt-4 border-t pt-4">
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <div class="text-sm font-semibold text-gray-700">Note</div>
+                            <div class="text-gray-700 text-[14px] font-medium">Ayamnya bagian dada, cabenya yang banyak.</div>
+                        </div>
+                        <div>
+                            <div class="text-sm font-semibold text-gray-700 mb-2">Order Menu</div>
+                            <div class="flex flex-col gap-2 font-poppins font-medium text-[12px] text-gray-500">
+                                <!-- Menu 1 -->
+                                <div class="flex items-center gap-2 pb-2">
+                                    <img src="/img/admin/datapesanan/menu1.png" alt="menu1" class="w-auto h-auto rounded-full object-cover">
+                                    <div>
+                                        <span class="block">Ayam Katsu</span>
+                                        <span class="block text-gray-500">Rp.20.000 x3</span>
+                                    </div>
+                                    <div class="ml-auto flex flex-col items-end">
+                                        <span class="text-gray-500">Total</span>
+                                        <span class="font-semibold text-gray-700">Rp.60.000</span>
+                                    </div>
+                                </div>
+                                <!-- Garis pemisah -->
+                                <div class="border-t border-gray-300"></div>
+                                <!-- Menu 2 -->
+                                <div class="flex items-center gap-2 pt-2">
+                                    <img src="/img/admin/datapesanan/menu2.png" alt="menu2" class="w-auto h-auto rounded-full object-cover">
+                                    <div>
+                                        <span class="block">Telur Puyuh</span>
+                                        <span class="block text-gray-500">Rp.20.000 x5</span>
+                                    </div>
+                                    <div class="ml-auto flex flex-col items-end">
+                                        <span class="text-gray-500">Total</span>
+                                        <span class="font-semibold text-gray-700">Rp.100.000</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="font-semibold">Rp.{{ number_format($item['total'], 0, ',', '.') }}</div>
                         </div>
-                        @endforeach
-                    </div>
-                    <div class="flex flex-col justify-center items-start">
-                        <div class="text-gray-500 text-sm mb-1">Payment Method</div>
-                        <div class="font-semibold mb-4">{{ $order->payment_method }}</div>
-                        <div class="text-lg font-bold text-gray-800">Pesanan Selesai</div>
+                        <!-- Status & Payment Column -->
+                        <div class="flex flex-col gap-4 pl-7">
+                            <div>
+                                <div class="text-sm font-semibold text-gray-700">Payment Method</div>
+                                <div class="text-gray-700">Cash</div>
+                            </div>
+                            <div>
+                                <div class="text-sm font-semibold text-gray-700">Status Pesanan</div>
+                                <div class="text-green-600 font-bold">Selesai</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        @endforeach
-    </div>
+            {{-- end card order 1 --}}
 
-    <!-- Pagination -->
-    <div class="flex justify-center mt-6 space-x-2">
-        <button class="px-3 py-1 bg-gray-300 text-sm rounded">Previous</button>
-        <button class="px-3 py-1 bg-blue-500 text-white text-sm rounded">1</button>
-        <button class="px-3 py-1 bg-yellow-100 text-sm rounded">2</button>
-        <button class="px-3 py-1 bg-yellow-100 text-sm rounded">3</button>
-        <button class="px-3 py-1 bg-gray-300 text-sm rounded">Next</button>
+        </div>
+
+        <!-- Pagination -->
+        <div class="fixed bottom-6 left-0 w-full flex justify-center items-end z-50">
+            <nav class="flex items-center space-x-2 text-sm">
+            <button class="px-3 py-1 bg-gray-200 text-gray-700 rounded">Previous</button>
+            <button class="px-3 py-1 bg-[#22668D] text-white rounded">1</button>
+            <button class="px-3 py-1 bg-white border border-gray-300 rounded">2</button>
+            <button class="px-3 py-1 bg-white border border-gray-300 rounded">3</button>
+            <button class="px-3 py-1 bg-gray-200 text-gray-700 rounded">Next</button>
+            </nav>
+        </div>
     </div>
-</div>
-@endsection
+</body>
+</html>

@@ -34,4 +34,14 @@ Route::get('/admin/datapesanan', function () {
     return view('admin.datapesanan');
 });
 
+Route::get('/admin/datakehadiran', function () {
+    return view('admin.datakehadiran');
+});
 
+Route::get('/admin/daftarmenu', function () {
+    return view('admin.daftarmenu');
+});
+
+Route::get('/admin/login', function () {
+    return view('admin.login');
+});
