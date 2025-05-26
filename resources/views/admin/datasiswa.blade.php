@@ -16,14 +16,6 @@
 
 <body class="bg-[#FFFADD]">
   @include('components.navbaradmin')
-    <div class="flex justify-end px-8">
-      <div class="flex items-center gap-2 mb-7 mt-5">
-        <span class="text-gray-800 font-bold text-[12px]">Admin</span>
-        <div class="w-[37px] h-[37px] bg-[#FFCC70] rounded-full flex items-center justify-center text-white font-bold">
-          <img src="/img/admin/datasiswa/user.png" alt="user" class="w-[21px] h-[21px]">
-        </div>
-      </div>
-    </div>
   <!-- Rectangle 1 - Judul dan Tombol -->
   <div class="bg-white rounded-xl shadow-xl px-8 py-4 flex items-center justify-between mb-6">
     <h1 class="text-2xl md:text-[28px] font-bold text-[#002E48] text-center flex-1">
@@ -36,7 +28,7 @@
 
 
 <!-- Rectangle 2 - Tabel -->
-<div class="bg-white rounded-xl shadow-xl px-6 py-4 relative z">
+<div class="bg-white rounded-xl shadow-xl px-6 py-4 relative z-[-10] ">
   <div class="overflow-x-auto">
     <table id="studentTable" class="min-w-full border border-[#FBA304] text-sm text-center">
       <thead>
