@@ -41,6 +41,54 @@
                 class="absolute top-[175px] left-[626px] transform -translate-x-1/2 flex w-[50%] flex-wrap items-start gap-5 mt-2">
                 {{-- ...ISI ITEM MAIN COURSE seperti yang sudah ada, pastikan ada atribut data-name, data-price, data-img... --}}
                 <!-- Item 1 -->
+                <div class="relative w-[200px] h-[296px] flex justify-center items-center hover:border-2 hover:border-[#FBA304] rounded-xl hover:shadow-[0_0_10px_2px_#FBA304] transition-all duration-300"
+                    data-name="Ayam Geprek" data-price="20000" data-img="img/order/ordermenu1.png">
+                    {{-- Gambar Menu --}}
+                    <img src="img/order/ordermenu1.png" alt="ayam-geprek"
+                        class="w-auto h-[250px] object-cover z-0 mt-5">
+                    {{-- Teks Add --}}
+                    <div class="absolute top-[82%] mt-[6px] text-center">
+                        <span class="quantity text-black font-inter font-bold text-[13px]" style="opacity: 0.25;">
+                            Add
+                        </span>
+                    </div>
+                    {{-- Tombol Plus dan Minus --}}
+                    <div
+                        class="absolute top-[83%] mt-[6px] flex justify-between items-center w-[100px] h-[21px] bg-[#FFFADD] bg-opacity-40 rounded-[20px] z-10">
+                        <img src="img/order/minus.png" alt="minus-button"
+                            class="minus-button w-[17px] h-[17px] ml-2 cursor-pointer">
+                        <img src="img/order/plus.png" alt="plus-button"
+                            class="plus-button w-[17px] h-[17px] mr-2 cursor-pointer">
+                    </div>
+                    {{-- SVG untuk teks melengkung --}}
+                    <svg class="absolute top-[-50px] left-0 w-full h-[20em] z-50 pointer-events-none"
+                        viewBox="0 0 264 264">
+                        <path id="menu1-path" d="M132,132 m-100,0 a100,100 0 1,1 200,0 a100,100 0 1,1 -200,0"
+                            fill="none" />
+                        <text class="font-inter font-bold font-size-[12px] relative" fill="#002E48"
+                            letter-spacing="3px">
+                            <textPath href="#menu1-path" text-anchor="middle" startOffset="25%">
+                                AYAM ayam
+                            </textPath>
+                        </text>
+                    </svg>
+                    {{-- Teks Deskripsi --}}
+                    <div class="absolute top-[78%] left-0 w-full text-center transform -translate-y-[50%]">
+                        <span class="text-black font-[Poppins] text-[8px] block">
+                            Ayam Geprek - Lalapan - Pisang
+                        </span>
+                        <div class="flex justify-center items-center mt-[3px] ml-[5px]">
+                            <span class="text-black font-semibold font-[Poppins] text-[13px]"
+                                style="opacity: 0.82; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);">
+                                RP. 20.000
+                            </span>
+                            <img src="img/order/like.png" alt="like-button" class="w-[22px] h-[22px] ml-8"
+                                style="opacity: 0.82; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 1 -->
                 <div class="relative w-[200px] h-[296px] flex justify-center items-center border-2 border-[#FBA304] rounded-xl hover:shadow-[0_0_10px_2px_#FBA304]"
                     data-name="Ayam Geprek" data-price="20000" data-img="img/order/ordermenu1.png">
                     {{-- Gambar Menu --}}
@@ -87,6 +135,57 @@
                         </div>
                     </div>
                 </div>
+                <!-- Item 1 -->
+                <div class="relative w-[200px] h-[296px] flex justify-center items-center border-2 border-[#FBA304] rounded-xl hover:shadow-[0_0_10px_2px_#FBA304]"
+                    data-name="Ayam Geprek" data-price="20000" data-img="img/order/ordermenu1.png">
+                    {{-- Gambar Menu --}}
+                    <img src="img/order/ordermenu1.png" alt="ayam-geprek"
+                        class="w-auto h-[250px] object-cover z-0 mt-5">
+                    {{-- Teks Add --}}
+                    <div class="absolute top-[82%] mt-[6px] text-center">
+                        <span class="quantity text-black font-inter font-bold text-[13px]" style="opacity: 0.25;">
+                            Add
+                        </span>
+                    </div>
+                    {{-- Tombol Plus dan Minus --}}
+                    <div
+                        class="absolute top-[83%] mt-[6px] flex justify-between items-center w-[100px] h-[21px] bg-[#FFFADD] bg-opacity-40 rounded-[20px] z-10">
+                        <img src="img/order/minus.png" alt="minus-button"
+                            class="minus-button w-[17px] h-[17px] ml-2 cursor-pointer">
+                        <img src="img/order/plus.png" alt="plus-button"
+                            class="plus-button w-[17px] h-[17px] mr-2 cursor-pointer">
+                    </div>
+                    {{-- SVG untuk teks melengkung --}}
+                    <svg class="absolute top-[-50px] left-0 w-full h-[20em] z-50 pointer-events-none"
+                        viewBox="0 0 264 264">
+                        <path id="menu1-path" d="M132,132 m-100,0 a100,100 0 1,1 200,0 a100,100 0 1,1 -200,0"
+                            fill="none" />
+                        <text class="font-inter font-bold font-size-[12px] relative" fill="#002E48"
+                            letter-spacing="3px">
+                            <textPath href="#menu1-path" text-anchor="middle" startOffset="25%">
+                                AYAM ayam
+                            </textPath>
+                        </text>
+                    </svg>
+                    {{-- Teks Deskripsi --}}
+                    <div class="absolute top-[78%] left-0 w-full text-center transform -translate-y-[50%]">
+                        <span class="text-black font-[Poppins] text-[8px] block">
+                            Ayam Geprek - Lalapan - Pisang
+                        </span>
+                        <div class="flex justify-center items-center mt-[3px] ml-[5px]">
+                            <span class="text-black font-semibold font-[Poppins] text-[13px]"
+                                style="opacity: 0.82; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);">
+                                RP. 20.000
+                            </span>
+                            <img src="img/order/like.png" alt="like-button" class="w-[22px] h-[22px] ml-8"
+                                style="opacity: 0.82; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);">
+                        </div>
+                    </div>
+                </div>
+                
+
+
+
             </div>
 
             <!-- Ricebowl Menu -->

@@ -1,6 +1,10 @@
 <?php
+
+use App\Http\Controllers\ControllerUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -38,10 +42,17 @@ Route::get('/admin/datakehadiran', function () {
     return view('admin.datakehadiran');
 });
 
-Route::get('/admin/daftarmenu', function () {
-    return view('admin.daftarmenu');
-});
+// Route::get('/admin/daftarmenu', function () {
+//     return view('admin.daftarmenu');
+// });
 
-Route::get('/admin/login', function () {
-    return view('admin.login');
-});
+Route::get('/admin/daftarmenu',[ControllerUser::class, 'daftarmenu'])->name('login.daftarmenu');
+
+Route::get('/admin/login',[ControllerUser::class, 'login'])->name('login');
+Route::post('/admin/login', [ControllerUser::class, 'loginAction'])->name('login.action');
+
+
+
+// Route::get('/admin/login', function () {
+//     return view('admin.login');
+// });
