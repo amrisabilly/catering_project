@@ -127,10 +127,16 @@
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6h18M3 12h18M3 18h18" />
         </svg>
-        <select class="outline-none bg-white">
-          <option>7 Istambul</option>
-          <option>8 Jakarta</option>
-          <option>9 Surabaya</option>
+        <select id="class" class="outline-none bg-white">
+          <option value="7 Istambul">7 Alexandria</option>
+          <option value="7 Istambul">7 Granada</option>
+          <option value="7 Istambul">7 Istambul</option>
+          <option value="8 Tokyo">8 Baghdad</option>
+          <option value="9 Berlin">8 Cordova</option>
+          <option value="9 Berlin">8 Damaskus</option>
+          <option value="9 Berlin">8 Kairo</option>
+          <option value="10 Paris">9 Gazza</option>
+          <option value="10 Paris">9 Makkah</option>
         </select>
       </div>
 

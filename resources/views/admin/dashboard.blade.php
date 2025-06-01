@@ -13,7 +13,7 @@
     }
   </style>
 </head>
-    <body>
+    <body class="bg-[#FFFADD]">
     @include('components.navbaradmin')
     <main class="flex-1 p-8 md:ml-[350px] transition-all duration-300">
         <!-- Top bar -->

@@ -16,6 +16,14 @@
 
 <body class="bg-[#FFFADD]">
   @include('components.navbaradmin')
+    <div class="flex justify-end px-8">
+    <div class="flex items-center gap-2 mb-7 mt-5">
+      <span class="text-gray-800 font-bold text-[12px]">Admin</span>
+      <div class="w-[37px] h-[37px] bg-[#FFCC70] rounded-full flex items-center justify-center text-white font-bold">
+        <img src="/img/admin/datasiswa/user.png" alt="user" class="w-[21px] h-[21px]">
+      </div>
+    </div>
+  </div>
   <!-- Rectangle 1 - Judul dan Tombol -->
   <div class="bg-white rounded-xl shadow-xl px-8 py-4 flex items-center justify-between mb-6">
     <h1 class="text-2xl md:text-[28px] font-bold text-[#002E48] text-center flex-1">
@@ -103,9 +111,15 @@
       </div>
 
       <select id="class" class="w-full mb-3 px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-yellow-300" required>
+        <option value="7 Istambul">7 Alexandria</option>
+        <option value="7 Istambul">7 Granada</option>
         <option value="7 Istambul">7 Istambul</option>
-        <option value="8 Tokyo">8 Tokyo</option>
-        <option value="9 Berlin">9 Berlin</option>
+        <option value="8 Tokyo">8 Baghdad</option>
+        <option value="9 Berlin">8 Cordova</option>
+        <option value="9 Berlin">8 Damaskus</option>
+        <option value="9 Berlin">8 Kairo</option>
+        <option value="10 Paris">9 Gazza</option>
+        <option value="10 Paris">9 Makkah</option>
       </select>
 
       <div class="mb-3 text-sm">
