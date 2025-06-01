@@ -102,7 +102,7 @@
   <div class="bg-white w-[350px] md:w-[420px] rounded-2xl shadow-lg px-6 py-6 relative">
     <button onclick="closeModal()" class="absolute top-3 right-4 text-2xl text-[#FFB100] font-bold">✕</button>
     <h2 class="text-center text-[20px] font-bold text-[#002E48] mb-5">Entri Siswa</h2>
-    <form id="studentForm" onsubmit="addStudent(event)">
+    <form action="{{ route('datasiswa.action') }}" method="POST" id="studentForm"">
       <input id="fullName" type="text" placeholder="Full Name" class="w-full mb-3 px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-yellow-300" required />
 
       <div class="relative mb-3">

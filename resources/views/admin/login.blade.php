@@ -65,7 +65,7 @@
             <form action="{{ route('login.action') }}" method="POST">
                 @csrf
                 <!-- Input Username -->
-                <div class="flex items-center bg-[#EDEDED] rounded-[22px] px-4 py-3 gap-3">
+                <div class="flex items-center bg-[#EDEDED] rounded-[22px] px-4 py-3 gap-3 mb-4">
                     <i class="fas fa-user text-[#002E48]"></i>
                     <input type="text" placeholder="Username" name="username" required
                         class="bg-transparent outline-none w-full text-[#002E48]" />
