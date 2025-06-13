@@ -1,11 +1,11 @@
 <?php
-
-use App\Http\Controllers\ControllerUser;
-use App\Http\Controllers\ControllerMenu;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
-
+use App\Http\Controllers\ControllerUser;
+use App\Http\Controllers\ControllerMenu;
+use App\Http\Controllers\ControllerDataSiswa; 
+use App\Http\Controllers\ControllerDataPesanan;
+use App\Http\Controllers\ControllerDataKehadiran;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,37 +27,50 @@ Route::get('/contactus', function () {
     return view('contactus');
 });
 
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
-});
+// Route::get('/admin/dashboard', function () {
+//     return view('admin.dashboard');
+// });
 
-Route::get('/admin/datasiswa', function () {
-    return view('admin.datasiswa');
-});
+// Route::get('/admin/datasiswa', function () {
+//     return view('admin.datasiswa');
+// });
 
-Route::get('/admin/datapesanan', function () {
-    return view('admin.datapesanan');
-});
+// Route::get('/admin/datapesanan', function () {
+//     return view('admin.datapesanan');
+// });
 
-Route::get('/admin/datakehadiran', function () {
-    return view('admin.datakehadiran');
-});
+// Route::get('/admin/datakehadiran', function () {
+//     return view('admin.datakehadiran');
+// });
 
 
+// Dashboard Admin
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', [ControllerUser::class, 'showLogin'])->name('login');
     Route::post('/login-action', [ControllerUser::class, 'login'])->name('login.action');
     Route::get('/logout', [ControllerUser::class, 'logout'])->name('logout');
 
-});
-
-Route::prefix('admin')->name('admin.')->group(function () {
+    // Menu Management
     Route::get('/daftarmenu', [ControllerMenu::class, 'index'])->name('daftarmenu');
     Route::post('/daftarmenu', [ControllerMenu::class, 'store'])->name('daftarmenu.store');
     Route::get('/daftarmenu/{id}/edit', [ControllerMenu::class, 'edit'])->name('daftarmenu.edit');
     Route::put('/daftarmenu/{id}', [ControllerMenu::class, 'update'])->name('daftarmenu.update');
     Route::delete('/daftarmenu/{id}', [ControllerMenu::class, 'destroy'])->name('daftarmenu.destroy');
+
+    // Data Siswa Management
+    Route::get('/datasiswa', [ControllerDataSiswa::class, 'index'])->name('datasiswa');
+    Route::post('/datasiswa', [ControllerDataSiswa::class, 'store'])->name('datasiswa.store');
+    Route::put('/datasiswa/{id}', [ControllerDataSiswa::class, 'update'])->name('datasiswa.update');
+    Route::delete('/datasiswa/{id}', [ControllerDataSiswa::class, 'destroy'])->name('datasiswa.destroy');
+
+    // Data Masuk
+    Route::get('/datapesanan', [ControllerDataPesanan::class, 'index'])->name('datapesanan');
+
+
+    // Data Kehadiran
+    Route::get('/datakehadiran', [ControllerDataKehadiran::class, 'index'])->name('datakehadiran');
 });
+
 
 
 

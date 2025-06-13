@@ -50,6 +50,7 @@
                         <th class="px-4 py-2 border border-[#FBA304]">Nama Menu</th>
                         <th class="px-4 py-2 border border-[#FBA304]">Keterangan</th>
                         <th class="px-4 py-2 border border-[#FBA304]">Harga Menu</th>
+                        <th class="px-4 py-2 border border-[#FBA304]">Kategori</th>
                         <th class="px-4 py-2 border border-[#FBA304]">Gambar</th>
                         <th class="px-4 py-2 border border-[#FBA304]">Option</th>
                     </tr>
@@ -64,24 +65,31 @@
                             <td class="px-4 py-2 border border-[#FBA304]">Rp.
                                 {{ number_format($menu->harga, 0, ',', '.') }}</td>
                             <td class="px-4 py-2 border border-[#FBA304]">{{ $menu->kategori }}</td>
-                            <td class="px-4 py-2 border border-[#FBA304] w-[100px] h-auto">
-                                @if ($menu->gambar)
-                                    <img src="{{ asset('storage/' . $menu->gambar) }}" alt="menu"
-                                        class="w-full h-auto">
+                            <td class="px-4 py-2 border border-[#FBA304] text-center">
+                                @if($menu->gambar)
+                                    <img src="{{ asset('storage/'.$menu->gambar) }}" alt="gambar" class="w-16 h-16 object-cover rounded mx-auto">
+                                @else
+                                    <span class="text-gray-400">-</span>
                                 @endif
                             </td>
                             <td class="px-4 py-2 border border-[#FBA304]">
-                                <div class="flex gap-2 items-center justify-center">
-                                    <a href="{{ route('admin.daftarmenu.edit', $menu->id) }}"
-                                        class="bg-[#22668D] text-white px-3 py-1 rounded text-xs">Edit</a>
-                                    <form action="{{ route('admin.daftarmenu.destroy', $menu->id) }}" method="POST"
-                                        style="display:inline" onsubmit="return confirmDelete(event)">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button
-                                            class="bg-[#FF3235] text-white px-3 py-1 rounded text-xs">Delete</button>
-                                    </form>
-                                </div>
+                                    <a href="javascript:void(0);" 
+                                    class="bg-blue-500 text-white px-3 py-1 rounded-[12px] mr-2"
+                                    onclick="openEditMenuModal(this)"
+                                    data-id="{{ $menu->id }}"
+                                    data-nama="{{ $menu->nama_menu }}"
+                                    data-keterangan="{{ $menu->keterangan }}"
+                                    data-harga="{{ $menu->harga }}"
+                                    data-kategori="{{ $menu->kategori }}"
+                                    data-gambar="{{ $menu->gambar ? asset('storage/'.$menu->gambar) : '' }}"
+                                    >
+                                        Edit
+                                    </a>
+                                <form action="{{ route('admin.daftarmenu.destroy', $menu->id) }}" method="POST" class="inline" onsubmit="return confirm('Yakin hapus menu ini?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded-[12px]">Hapus</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
@@ -144,6 +152,16 @@
                     </div>
                 </div>
 
+                <!-- Kategori -->
+                <label class="block text-[#002E48] font-semibold mb-1">Kategori</label>
+                <select name="kategori" class="w-full mb-4 px-4 py-2 rounded-xl bg-[#EDEDED] focus:outline-none"
+                    required>
+                    <option value="">Pilih Kategori</option>
+                    <option value="Main Course">Main Course</option>
+                    <option value="Rice Bowl">Rice Bowl</option>
+                    <!-- Tambahkan kategori lain jika perlu -->
+                </select>
+
                 <!-- Upload File -->
                 <div
                     class="w-full h-32 bg-[#F5F5F5] border-2 border-dashed border-gray-300 rounded-xl flex flex-col items-center justify-center text-center text-gray-500 mb-6">
@@ -189,6 +207,28 @@
             // Proses simpan ke backend bisa diintegrasikan di sini
             closeMenuModal();
         }
+
+        function openEditMenuModal(btn) {
+            // ... kode lain ...
+            let gambar = btn.getAttribute('data-gambar');
+            let preview = document.getElementById('edit_gambar_preview');
+            if (gambar) {
+                preview.src = gambar;
+                preview.classList.remove('hidden');
+            } else {
+                preview.classList.add('hidden');
+            }
+            // ... kode lain ...
+        }
+
+        document.querySelector('#editMenuForm input[name="gambar"]').addEventListener('change', function(e) {
+            const [file] = e.target.files;
+            if (file) {
+                const preview = document.getElementById('edit_gambar_preview');
+                preview.src = URL.createObjectURL(file);
+                preview.classList.remove('hidden');
+            }
+        });
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -223,6 +263,126 @@
             });
             return false;
         }
+    </script>
+
+    <!-- Modal Edit Menu -->
+    <div id="editMenuModal" class="fixed inset-0 bg-black bg-opacity-40 hidden items-center justify-center z-50">
+        <div class="bg-white w-[90%] max-w-[640px] max-h-[90vh] overflow-y-auto rounded-[24px] px-8 py-6 relative scrollbar-thin">
+            <!-- Tombol Close -->
+            <button onclick="closeEditMenuModal()"
+                class="absolute top-4 right-6 text-2xl text-[#FFB100] font-bold">✕</button>
+
+            <!-- Judul -->
+            <h2 class="text-center text-[24px] font-bold text-[#002E48] mb-6">Edit Menu</h2>
+
+            <!-- Form -->
+            <form id="editMenuForm" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+
+                <!-- Nama Menu -->
+                <label class="block text-[#002E48] font-semibold mb-1">Nama Menu</label>
+                <input type="text" name="nama_menu" id="edit_nama_menu"
+                    class="w-full mb-4 px-4 py-2 rounded-xl bg-[#EDEDED] focus:outline-none"
+                    required />
+
+                <!-- Keterangan -->
+                <label class="block text-[#002E48] font-semibold mb-1">Keterangan</label>
+                <textarea name="keterangan" id="edit_keterangan"
+                    class="w-full mb-4 px-4 py-3 rounded-xl bg-[#EDEDED] resize-none focus:outline-none"
+                    rows="3"></textarea>
+
+                <!-- Harga -->
+                <div class="mb-4">
+                    <label class="block text-[#002E48] font-semibold mb-1">Harga /menu</label>
+                    <div class="flex gap-6">
+                        <label class="inline-flex items-center text-[#002E48]">
+                            <input type="radio" name="harga" id="edit_harga_16000" value="16000" class="mr-2" required />
+                            Rp.16.000
+                        </label>
+                        <label class="inline-flex items-center text-[#002E48]">
+                            <input type="radio" name="harga" id="edit_harga_20000" value="20000" class="mr-2" />
+                            Rp.20.000
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Kategori -->
+                <label class="block text-[#002E48] font-semibold mb-1">Kategori</label>
+                <select name="kategori" id="edit_kategori"
+                    class="w-full mb-4 px-4 py-2 rounded-xl bg-[#EDEDED] focus:outline-none" required>
+                    <option value="">Pilih Kategori</option>
+                    <option value="Main Course">Main Course</option>
+                    <option value="Rice Bowl">Rice Bowl</option>
+                </select>
+
+                <!-- Upload File Gambar -->
+                <label class="block text-[#002E48] font-semibold mb-1">Gambar Menu</label>
+                <div
+                    class="w-full bg-[#F5F5F5] border-2 border-dashed border-gray-300 rounded-xl flex flex-col items-center justify-center text-center text-gray-500 p-4 mb-6">
+                    <img src="/img/admin/daftarmenu/upload.png" alt="upload" class="w-[58px] h-[40px] mb-2" />
+                    <p class="font-semibold">Upload a File</p>
+                    <p class="text-sm">Drag and drop files here or click to select</p>
+
+                    <label
+                        class="mt-3 w-full cursor-pointer bg-white border border-gray-300 text-gray-700 rounded-md py-2 px-4 text-sm text-center hover:bg-gray-100 transition">
+                        Pilih Gambar
+                        <input type="file" name="gambar" id="edit_gambar" accept="image/*" class="hidden" />
+                    </label>
+
+                    <!-- Preview Gambar -->
+                    <img id="edit_gambar_preview"
+                        src="{{ asset('storage/menu/'.$menu->gambar) }}"
+                        alt="Preview Gambar"
+                        class="w-20 h-20 object-cover mt-4 rounded-md border {{ $menu->gambar ? '' : 'hidden' }}" />
+                </div>
+
+                <!-- Tombol Submit -->
+                <button type="submit"
+                    class="w-full bg-[#002E48] text-white font-semibold rounded-full py-2 text-center hover:bg-[#001b2e] transition">
+                    Update
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openEditMenuModal(btn) {
+            // Isi form dengan data dari tombol
+            document.getElementById('edit_nama_menu').value = btn.getAttribute('data-nama');
+            document.getElementById('edit_keterangan').value = btn.getAttribute('data-keterangan') || '';
+            // Harga
+            if (btn.getAttribute('data-harga') == '16000') {
+                document.getElementById('edit_harga_16000').checked = true;
+            } else if (btn.getAttribute('data-harga') == '20000') {
+                document.getElementById('edit_harga_20000').checked = true;
+            }
+            // Kategori
+            document.getElementById('edit_kategori').value = btn.getAttribute('data-kategori');
+            // Gambar preview
+            let gambar = btn.getAttribute('data-gambar');
+            let preview = document.getElementById('edit_gambar_preview');
+            if (gambar) {
+                preview.src = gambar;
+                preview.classList.remove('hidden');
+            } else {
+                preview.classList.add('hidden');
+            }
+            // Set action form
+            let id = btn.getAttribute('data-id');
+            document.getElementById('editMenuForm').action = '/admin/daftarmenu/' + id;
+
+            // Tampilkan modal
+            document.getElementById('editMenuModal').classList.remove('hidden');
+            document.getElementById('editMenuModal').classList.add('flex');
+        }
+        function closeEditMenuModal() {
+            document.getElementById('editMenuModal').classList.add('hidden');
+            document.getElementById('editMenuModal').classList.remove('flex');
+            document.getElementById('editMenuForm').reset();
+            document.getElementById('edit_gambar_preview').classList.add('hidden');
+        }
+        
     </script>
 
 </body>

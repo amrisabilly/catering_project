@@ -1,6 +1,6 @@
 <div x-data="{ sidebarOpen: true }" class="absolute flex font-sans bg-transparent">
     <!-- Sidebar -->
-    <div class="w-[350px] h-screen bg-[#002E48] flex-shrink-0 flex flex-col py-10 px-8 transition-transform duration-300 z-20 fixed md:static"
+    <div class="w-[350px] h-screen bg-[#002E48] flex-shrink-0 flex flex-col py-10 px-8 transition-transform duration-300 z-40 fixed md:static"
         :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'" style="will-change: transform;">
         <nav class="flex flex-col gap-6 ">
             <a href="/admin/dashboard"
