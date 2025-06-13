@@ -278,6 +278,9 @@
                         <span class="text-black font-[inter] text-[14px]">endahsetyowati1971@gmail.com</span>
                     </div>
                 </div>
+                <div class="ml-[7em]">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d370.79706591135783!2d104.51444532343152!3d0.9241675969937215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sjalan%20perumahan%20ganden%20indah%20blok%20d%20no%207%20km%2011%20tanjung%20pinang%20timur%20d%20no!5e0!3m2!1sid!2sid!4v1748791223741!5m2!1sid!2sid" width="350" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </div>
             <div class="w-full h-[80px] bg-[#002E48] flex items-center justify-center">
                 <div class="flex items-center">

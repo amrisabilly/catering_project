@@ -1,37 +1,39 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\ModelUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
 
 class ControllerUser
 {
     //
-    public function login()
+    public function showLogin()
     {
-        // Logic to handle user index
         return view('admin.login');
     }
 
-    public function loginAction(Request $request)
+    public function login(Request $request)
     {
-        $user = ModelUser::where('username', $request->username)
-            ->where('password', $request->password)
-            ->first();
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required'
+        ]);
 
-       if ($user) {
-            session(['admin_logged_in' => true, 'admin_username' => $user->username]);
-            return redirect('/admin/daftarmenu')->with('success', 'Login berhasil! Selamat datang, ' . $user->username . '.');
+        $admin = ModelUser::where('username', $request->username)->first();
+
+        if ($admin && Hash::check($request->password, $admin->password)) {
+            session(['admin_logged_in' => true, 'admin_username' => $admin->username]);
+            return redirect('/admin/dashboard');
         } else {
             return back()->with('error', 'Username atau password salah!');
         }
     }
 
-    public function daftarmenu()
+    public function logout()
     {
-        // Logic to handle user index
-        return view('admin.daftarmenu');
+        session()->forget(['admin_logged_in', 'admin_username']);
+        return redirect()->route('admin.login')->with('logout', 'Anda berhasil logout!');
     }
-
 }

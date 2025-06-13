@@ -14,6 +14,7 @@
             font-family: 'Poppins', sans-serif;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="min-h-screen flex overflow-hidden font-['Poppins']">
@@ -62,7 +63,7 @@
 
         <!-- FORM -->
         <div class=" w-[354px] h-[55px] mx-auto space-y-4">
-            <form action="{{ route('login.action') }}" method="POST">
+            <form action="{{ route('admin.login.action') }}" method="POST">
                 @csrf
                 <!-- Input Username -->
                 <div class="flex items-center bg-[#EDEDED] rounded-[22px] px-4 py-3 gap-3 mb-4">
@@ -80,6 +81,7 @@
                     <img src="/img/admin/login/password.png" alt="password" class="w-[25px] h-[25px] mr-1" />
                 </div>
 
+
                 <!-- Tombol Login -->
                 <div class="flex justify-center pt-2">
                     <button type="submit"
@@ -93,6 +95,32 @@
         <!-- Ilustrasi Ayam -->
         <img src="/img/admin/login/ilustrasiayam.png" alt="Ilustrasi Ayam" class="absolute bottom-4 right-8 w-28" />
     </div>
+
+@if(session('error'))
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        Swal.fire({
+            icon: 'error',
+            title: 'Login Gagal',
+            text: '{{ session('error') }}',
+            confirmButtonColor: '#FFCC70'
+        });
+    });
+</script>
+@endif
+
+@if(session('logout'))
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil Logout',
+            text: '{{ session('logout') }}',
+            confirmButtonColor: '#FFCC70'
+        });
+    });
+</script>
+@endif
 
 </body>
 

@@ -1,3 +1,7 @@
+@if(!session('admin_logged_in'))
+    <script>window.location = "{{ route('admin.login') }}";</script>
+@endif
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
