@@ -23,6 +23,10 @@ Route::get('/catering', function () {
     return view('catering');
 });
 
+Route::get('/formdaftar', function () {
+    return view('formdaftar');
+});
+
 Route::get('/aboutus', function () {
     return view('aboutus');
 });
