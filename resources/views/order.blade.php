@@ -59,6 +59,18 @@
                             <img src="{{ asset('img/order/plus.png') }}" alt="plus-button"
                                 class="plus-button w-[17px] h-[17px] mr-2 cursor-pointer">
                         </div>
+                        {{-- SVG untuk teks melengkung --}}
+                        <svg class="absolute top-[-50px] left-0 w-full h-[20em] z-50 pointer-events-none"
+                            viewBox="0 0 264 264">
+                            <path id="menu-path-{{ $menu->id }}"
+                                d="M132,132 m-100,0 a100,100 0 1,1 200,0 a100,100 0 1,1 -200,0" fill="none" />
+                            <text class="font-inter font-bold font-size-[12px] relative" fill="#002E48"
+                                letter-spacing="3px">
+                                <textPath href="#menu-path-{{ $menu->id }}" text-anchor="middle" startOffset="25%">
+                                {{ $menu->nama_menu ?? '-' }}
+                                </textPath>
+                            </text>
+                        </svg>
                         {{-- Teks Deskripsi --}}
                         <div class="absolute top-[78%] left-0 w-full text-center transform -translate-y-[50%]">
                             <span class="text-black font-[Poppins] text-[8px] block">
@@ -110,7 +122,7 @@
                             <text class="font-inter font-bold font-size-[12px] relative" fill="#002E48"
                                 letter-spacing="3px">
                                 <textPath href="#menu-path-{{ $menu->id }}" text-anchor="middle" startOffset="25%">
-                                    {{ strtoupper($menu->nama_menu) }}
+                                {{ $menu->nama_menu ?? '-' }}
                                 </textPath>
                             </text>
                         </svg>
