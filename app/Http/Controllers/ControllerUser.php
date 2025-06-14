@@ -36,4 +36,13 @@ class ControllerUser
         session()->forget(['admin_logged_in', 'admin_username']);
         return redirect()->route('admin.login')->with('logout', 'Anda berhasil logout!');
     }
+
+    public function index()
+    {
+        if (!session('admin_logged_in')) {
+            return redirect()->route('admin.login');
+        }
+
+        return view('admin.dashboard');
+    }
 }

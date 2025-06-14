@@ -6,14 +6,18 @@ use App\Http\Controllers\ControllerMenu;
 use App\Http\Controllers\ControllerDataSiswa; 
 use App\Http\Controllers\ControllerDataPesanan;
 use App\Http\Controllers\ControllerDataKehadiran;
+use App\Http\Controllers\ControllerLanding;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/order', function () {
-    return view('order');
-})->name('order');
+// Route::get('/order', function () {
+//     return view('order');
+// })->name('order');
+
+Route::get('/order', [ControllerLanding::class, 'index'])->name('index');
+
 
 Route::get('/catering', function () {
     return view('catering');
@@ -43,12 +47,37 @@ Route::get('/contactus', function () {
 //     return view('admin.datakehadiran');
 // });
 
+// Route::prefix('landing')->name('landing.')->group(function () {
+//     Route::get('/', function () {
+//         return view('landing.index');
+//     })->name('index');
+
+//     Route::get('/order', function () {
+//         return view('landing.order');
+//     })->name('order');
+
+//     Route::get('/catering', function () {
+//         return view('landing.catering');
+//     })->name('catering');
+
+//     Route::get('/aboutus', function () {
+//         return view('landing.aboutus');
+//     })->name('aboutus');
+
+//     Route::get('/contactus', function () {
+//         return view('landing.contactus');
+//     })->name('contactus');
+// });
+
 
 // Dashboard Admin
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', [ControllerUser::class, 'showLogin'])->name('login');
     Route::post('/login-action', [ControllerUser::class, 'login'])->name('login.action');
     Route::get('/logout', [ControllerUser::class, 'logout'])->name('logout');
+
+    Route::get('/dashboard', [ControllerUser::class, 'index'])->name('index');
+
 
     // Menu Management
     Route::get('/daftarmenu', [ControllerMenu::class, 'index'])->name('daftarmenu');
