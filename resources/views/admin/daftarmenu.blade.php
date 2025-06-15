@@ -96,16 +96,35 @@
                 </tbody>
             </table>
         </div>
-        <!-- Pagination -->
-        <div class="flex justify-end mt-4">
-            <nav class="flex items-center space-x-2 text-sm">
-                <button class="px-3 py-1 bg-gray-200 text-gray-700 rounded">Previous</button>
-                <button class="px-3 py-1 bg-[#22668D] text-white rounded">1</button>
-                <button class="px-3 py-1 bg-white border border-gray-300 rounded">2</button>
-                <button class="px-3 py-1 bg-white border border-gray-300 rounded">3</button>
-                <button class="px-3 py-1 bg-gray-200 text-gray-700 rounded">Next</button>
-            </nav>
-        </div>
+    <!-- Custom Pagination -->
+    <div class="flex justify-end mt-4">
+        <nav class="flex items-center space-x-2 text-sm">
+            {{-- Tombol Previous --}}
+            @if ($menus->onFirstPage())
+                <span class="px-3 py-1 bg-gray-200 text-gray-700 rounded">Previous</span>
+            @else
+                <a href="{{ $menus->previousPageUrl() }}" class="px-3 py-1 bg-gray-200 text-gray-700 rounded">Previous</a>
+            @endif
+
+            {{-- Tombol nomor halaman --}}
+            @foreach ($menus->getUrlRange(1, $menus->lastPage()) as $page => $url)
+                @if ($page == $menus->currentPage())
+                    <span class="px-3 py-1 bg-[#22668D] text-white rounded">{{ $page }}</span>
+                @else
+                    <a href="{{ $url }}" class="px-3 py-1 bg-white border border-gray-300 rounded">{{ $page }}</a>
+                @endif
+            @endforeach
+
+            {{-- Tombol Next --}}
+            @if ($menus->hasMorePages())
+                <a href="{{ $menus->nextPageUrl() }}" class="px-3 py-1 bg-gray-200 text-gray-700 rounded">Next</a>
+            @else
+                <span class="px-3 py-1 bg-gray-200 text-gray-700 rounded">Next</span>
+            @endif
+        </nav>
+    </div>
+ 
+
     </div>
     <!-- Gambar icon kacang kanan bawah -->
     <img src="/img/admin/datasiswa/icon_kacang.png" alt="icon kacang"

@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 use App\Models\ModelMenu;
 use Illuminate\Http\Request;
 
+
 class ControllerMenu
 {
      public function index()
     {
-        $menus = ModelMenu::paginate(5); // 5 data per halaman
+        $menus = ModelMenu::paginate(3); // 3 data per halaman
         return view('admin.daftarmenu', compact('menus'));
     }
 
