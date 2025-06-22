@@ -7,11 +7,22 @@ use Illuminate\Http\Request;
 
 class ControllerMenu
 {
-     public function index()
+    public function index(Request $request)
     {
-        $menus = ModelMenu::paginate(3); // 3 data per halaman
+        $menus = ModelMenu::paginate(2); // HANYA 2 DATA PER HALAMAN
+
+        if ($request->ajax()) {
+            return response()->json([
+                'tbody' => view('admin.partial.menu_table_rows', compact('menus'))->render(),
+                'pagination' => view('admin.partial.menu_pagination', compact('menus'))->render(),
+            ]);
+        }
+
         return view('admin.daftarmenu', compact('menus'));
     }
+
+
+
 
     public function store(Request $request)
     {

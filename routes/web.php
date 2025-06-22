@@ -7,6 +7,8 @@ use App\Http\Controllers\ControllerDataSiswa;
 use App\Http\Controllers\ControllerDataPesanan;
 use App\Http\Controllers\ControllerDataKehadiran;
 use App\Http\Controllers\ControllerLanding;
+use App\Http\Controllers\OrderController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,7 +19,9 @@ Route::get('/', function () {
 // })->name('order');
 
 Route::get('/order', [ControllerLanding::class, 'index'])->name('index');
-
+Route::post('/cart/add', [OrderController::class, 'addToCart'])->name('cart.add');
+Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
+Route::post('/order/payment/{id}', [OrderController::class, 'updatePembayaran'])->name('order.payment');
 
 Route::get('/catering', function () {
     return view('catering');
@@ -72,6 +76,9 @@ Route::get('/contactus', function () {
 //         return view('landing.contactus');
 //     })->name('contactus');
 // });
+
+Route::delete('/admin/pesanan/{id}', [ControllerDataPesanan::class, 'destroy'])->name('admin.pesanan.delete');
+Route::post('/admin/pesanan/konfirmasi/{id}', [ControllerDataPesanan::class, 'konfirmasi'])->name('admin.pesanan.konfirmasi');
 
 
 // Dashboard Admin

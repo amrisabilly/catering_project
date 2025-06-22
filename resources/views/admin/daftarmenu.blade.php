@@ -55,77 +55,48 @@
                         <th class="px-4 py-2 border border-[#FBA304]">Option</th>
                     </tr>
                 </thead>
-                <tbody>
-                    @foreach ($menus as $i => $menu)
-                        <tr class="{{ $i % 2 == 0 ? 'bg-[#FFFADD]' : 'bg-[#FFE39C]' }}">
-                            <td class="px-4 py-2 border border-[#FBA304]">{{ $menus->firstItem() + $i }}.</td>
-                            <td class="px-4 py-2 border border-[#FBA304]">{{ $menu->kode_menu }}</td>
-                            <td class="px-4 py-2 border border-[#FBA304]">{{ $menu->nama_menu }}</td>
-                            <td class="px-4 py-2 border border-[#FBA304]">{{ $menu->keterangan }}</td>
-                            <td class="px-4 py-2 border border-[#FBA304]">Rp.
-                                {{ number_format($menu->harga, 0, ',', '.') }}</td>
-                            <td class="px-4 py-2 border border-[#FBA304]">{{ $menu->kategori }}</td>
-                            <td class="px-4 py-2 border border-[#FBA304] text-center">
-                                @if($menu->gambar)
-                                    <img src="{{ asset('storage/'.$menu->gambar) }}" alt="gambar" class="w-16 h-16 object-cover rounded mx-auto">
-                                @else
-                                    <span class="text-gray-400">-</span>
-                                @endif
-                            </td>
-                            <td class="px-4 py-2 border border-[#FBA304]">
-                                    <a href="javascript:void(0);" 
-                                    class="bg-blue-500 text-white px-3 py-1 rounded-[12px] mr-2"
-                                    onclick="openEditMenuModal(this)"
-                                    data-id="{{ $menu->id }}"
-                                    data-nama="{{ $menu->nama_menu }}"
-                                    data-keterangan="{{ $menu->keterangan }}"
-                                    data-harga="{{ $menu->harga }}"
-                                    data-kategori="{{ $menu->kategori }}"
-                                    data-gambar="{{ $menu->gambar ? asset('storage/'.$menu->gambar) : '' }}"
-                                    >
-                                        Edit
-                                    </a>
-                                <form action="{{ route('admin.daftarmenu.destroy', $menu->id) }}" method="POST" class="inline" onsubmit="return confirm('Yakin hapus menu ini?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded-[12px]">Hapus</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
+                <tbody id="menuTableBody">
+                    @include('admin.partial.menu_table_rows', ['menus' => $menus])
                 </tbody>
             </table>
         </div>
-    <!-- Custom Pagination -->
-    <div class="flex justify-end mt-4">
-        <nav class="flex items-center space-x-2 text-sm">
-            {{-- Tombol Previous --}}
-            @if ($menus->onFirstPage())
-                <span class="px-3 py-1 bg-gray-200 text-gray-700 rounded">Previous</span>
-            @else
-                <a href="{{ $menus->previousPageUrl() }}" class="px-3 py-1 bg-gray-200 text-gray-700 rounded">Previous</a>
-            @endif
-
-            {{-- Tombol nomor halaman --}}
-            @foreach ($menus->getUrlRange(1, $menus->lastPage()) as $page => $url)
-                @if ($page == $menus->currentPage())
-                    <span class="px-3 py-1 bg-[#22668D] text-white rounded">{{ $page }}</span>
-                @else
-                    <a href="{{ $url }}" class="px-3 py-1 bg-white border border-gray-300 rounded">{{ $page }}</a>
-                @endif
-            @endforeach
-
-            {{-- Tombol Next --}}
-            @if ($menus->hasMorePages())
-                <a href="{{ $menus->nextPageUrl() }}" class="px-3 py-1 bg-gray-200 text-gray-700 rounded">Next</a>
-            @else
-                <span class="px-3 py-1 bg-gray-200 text-gray-700 rounded">Next</span>
-            @endif
-        </nav>
+        <!-- Custom Pagination -->
+        <div class="flex justify-end mt-4" id="paginationWrapper">
+            @include('admin.partial.menu_pagination', ['menus' => $menus])
+        </div>
     </div>
- 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function bindPaginationLinks() {
+                document.querySelectorAll("#paginationNav a").forEach(link => {
+                    link.addEventListener("click", function(e) {
+                        e.preventDefault();
+                        const url = this.getAttribute("href");
+                        fetchMenuData(url);
+                    });
+                });
+            }
 
-    </div>
+            function fetchMenuData(url) {
+                fetch(url, {
+                        headers: {
+                            "X-Requested-With": "XMLHttpRequest"
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        document.querySelector("#menuTableBody").innerHTML = data.tbody;
+                        document.querySelector("#paginationWrapper").innerHTML = data.pagination;
+                        bindPaginationLinks(); // Re-bind
+                    })
+                    .catch(error => console.error("Gagal memuat data:", error));
+            }
+
+            bindPaginationLinks();
+        });
+    </script>
+
+
     <!-- Gambar icon kacang kanan bawah -->
     <img src="/img/admin/datasiswa/icon_kacang.png" alt="icon kacang"
         class="fixed right-4 bottom-4 w-[240px] h-[240px] z-[1]" />
@@ -286,7 +257,8 @@
 
     <!-- Modal Edit Menu -->
     <div id="editMenuModal" class="fixed inset-0 bg-black bg-opacity-40 hidden items-center justify-center z-50">
-        <div class="bg-white w-[90%] max-w-[640px] max-h-[90vh] overflow-y-auto rounded-[24px] px-8 py-6 relative scrollbar-thin">
+        <div
+            class="bg-white w-[90%] max-w-[640px] max-h-[90vh] overflow-y-auto rounded-[24px] px-8 py-6 relative scrollbar-thin">
             <!-- Tombol Close -->
             <button onclick="closeEditMenuModal()"
                 class="absolute top-4 right-6 text-2xl text-[#FFB100] font-bold">✕</button>
@@ -302,25 +274,25 @@
                 <!-- Nama Menu -->
                 <label class="block text-[#002E48] font-semibold mb-1">Nama Menu</label>
                 <input type="text" name="nama_menu" id="edit_nama_menu"
-                    class="w-full mb-4 px-4 py-2 rounded-xl bg-[#EDEDED] focus:outline-none"
-                    required />
+                    class="w-full mb-4 px-4 py-2 rounded-xl bg-[#EDEDED] focus:outline-none" required />
 
                 <!-- Keterangan -->
                 <label class="block text-[#002E48] font-semibold mb-1">Keterangan</label>
                 <textarea name="keterangan" id="edit_keterangan"
-                    class="w-full mb-4 px-4 py-3 rounded-xl bg-[#EDEDED] resize-none focus:outline-none"
-                    rows="3"></textarea>
+                    class="w-full mb-4 px-4 py-3 rounded-xl bg-[#EDEDED] resize-none focus:outline-none" rows="3"></textarea>
 
                 <!-- Harga -->
                 <div class="mb-4">
                     <label class="block text-[#002E48] font-semibold mb-1">Harga /menu</label>
                     <div class="flex gap-6">
                         <label class="inline-flex items-center text-[#002E48]">
-                            <input type="radio" name="harga" id="edit_harga_16000" value="16000" class="mr-2" required />
+                            <input type="radio" name="harga" id="edit_harga_16000" value="16000"
+                                class="mr-2" required />
                             Rp.16.000
                         </label>
                         <label class="inline-flex items-center text-[#002E48]">
-                            <input type="radio" name="harga" id="edit_harga_20000" value="20000" class="mr-2" />
+                            <input type="radio" name="harga" id="edit_harga_20000" value="20000"
+                                class="mr-2" />
                             Rp.20.000
                         </label>
                     </div>
@@ -350,10 +322,8 @@
                     </label>
 
                     <!-- Preview Gambar -->
-                    <img id="edit_gambar_preview"
-                        src="{{ asset('storage/menu/'.$menu->gambar) }}"
-                        alt="Preview Gambar"
-                        class="w-20 h-20 object-cover mt-4 rounded-md border {{ $menu->gambar ? '' : 'hidden' }}" />
+                    <img id="edit_gambar_preview" src="" alt="Preview Gambar"
+                        class="w-20 h-20 object-cover mt-4 rounded-md border hidden" />
                 </div>
 
                 <!-- Tombol Submit -->
@@ -395,13 +365,13 @@
             document.getElementById('editMenuModal').classList.remove('hidden');
             document.getElementById('editMenuModal').classList.add('flex');
         }
+
         function closeEditMenuModal() {
             document.getElementById('editMenuModal').classList.add('hidden');
             document.getElementById('editMenuModal').classList.remove('flex');
             document.getElementById('editMenuForm').reset();
             document.getElementById('edit_gambar_preview').classList.add('hidden');
         }
-        
     </script>
 
 </body>
