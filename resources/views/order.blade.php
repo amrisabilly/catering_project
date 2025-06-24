@@ -150,107 +150,120 @@
 
         </div>
 
-        <!-- ================= PANEL KANAN: ORDER & FORM KERANJANG  ================= -->
-        <div
-            class="w-[439px] min-h-screen bg-white shadow-lg flex flex-col items-center justify-start sticky top-0 right-0 h-screen">
-            <!-- Order Summary Section -->
-            <div id="orderSummarySection" class="flex flex-col h-full w-full">
-                <h3 class="text-black font-bold text-[20px] mb-4 mt-12 px-5 text-center">Your Order</h3>
-                <!-- Scroll hanya di order list -->
-                <div id="orderList" class="order-summary w-full px-5 flex flex-col gap-3 overflow-y-auto"
-                    style="max-height: 520px;"></div>
-                <!-- Spacer agar tombol tetap di bawah -->
-                <div class="flex-1 mb-6"></div>
-                <!-- Total Cart -->
-                <div id="cart-total"
-                    class="w-full flex justify-between items-center font-bold text-[15px] pt-3 border-t mt-2 mb-4 px-6">
-                    <span>Total Price:</span>
-                    <span id="cart-amount" class="text-[#22668D]">Rp.0</span>
-                </div>
-                <!-- Tombol GO TO ORDER selalu di bawah -->
-                <div id="goToOrderBtn"
-                    class="w-full flex flex-col items-center mb-8 relative cursor-pointer pointer-events-none opacity-50">
-                    <img src="img/order/buttonorder.png" alt="order-icon" class="w-[194px] h-[49px] relative z-0">
-                    <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center z-10 gap-x-10">
-                        <img src="img/order/cart.png" alt="cart-icon" class="w-[30px] h-[30px] mr-0">
-                        <span class="font-bold font-inter text-[14px] text-center text-white block mr-2">
-                            GO TO ORDER
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <!-- Order Form Section (hidden by default) -->
-            <div id="formSection" class="hidden w-full min-h-screen flex flex-col bg-white px-8 pt-6 shadow-lg">
-                <!-- Back button & title -->
-                <div class="flex items-center justify-between mt-4 mb-2 px-2 ">
-                    <a href="javascript:void(0);" id="backToOrderBtn" class="flex items-center">
-                        <img src="img/order/backbutton.png" alt="back-button" class="w-[30px] h-[30px]" />
-                    </a>
-                    <h3 class="font-bold font-poppins text-[16px] text-black text-center flex-1 absolute left-0 right-0 mx-auto"
-                        style="pointer-events:none;">Deliver to</h3>
-                    <div style="width:32px;"></div>
-                </div>
-                <div class="relative flex items-center justify-center my-2">
-                    <!-- Line -->
-                    <div class="absolute h-[1.6px] w-[260px] bg-[#000000] z-0"></div>
-                    <!-- Circles -->
-                    <div class="flex justify-between w-full px-10 z-10">
-                        <div class="w-[20px] h-[20px] rounded-full bg-[#FBA304]"></div>
-                        <div class="w-[20px] h-[20px] rounded-full bg-[#D9D9D9]"></div>
-                        <div class="w-[20px] h-[20px] rounded-full bg-[#D9D9D9]"></div>
-                    </div>
-                </div>
-                <h3 class="font-bold font-poppins text-[16px] text-black mt-5 mb-4 text-center">Customer Information
-                </h3>
-                <form id="checkoutForm" action="{{ route('order.store') }}" method="POST">
-                    @csrf
-                    <div class="flex flex-col gap-4 mb-4">
-                        <input type="text" placeholder="Name" name="nama"
-                            class="border px-4 py-2 rounded-full outline-none shadow-sm" />
-                        <div class="flex items-center border px-4 py-2 rounded-full shadow-sm">
-                            <span class="text-gray-500 mr-2">(+62)</span>
-                            <input type="number" placeholder="Phone Number" name="no_hp"
-                                class="flex-1 outline-none" />
-                        </div>
-                        <textarea placeholder="Delivery Address" rows="3" name="alamat"
-                            class="border px-4 py-2 rounded-lg outline-none shadow-sm resize-none"></textarea>
-                        <input type="text" placeholder="Note.." name="catatan"
-                            class="border px-4 py-2 rounded-full outline-none shadow-sm" />
-                    </div>
-                    <input type="hidden" name="cart_json" id="cart_json">
-                    <div class="mt-auto mb-8 w-full flex justify-center">
-                        <button type="submit"
-                            class="bg-gradient-to-b from-[#0C4A6E] to-[#0A3D59] text-white font-bold px-8 py-2 rounded-full">
-                            CONFIRM
-                        </button>
-                    </div>
-                </form>
-            </div>
+    <!-- ================= PANEL KANAN: ORDER & FORM KERANJANG  ================= -->
+<div
+    class="w-[439px] min-h-screen bg-white shadow-lg flex flex-col items-center justify-start sticky top-0 right-0 h-screen">
 
-            <!-- Order Details Section -->
-            <div id="orderDetailsSection"
-                class="hidden w-full min-h-screen flex flex-col bg-white px-8 pt-6 shadow-lg">
-                <!-- ...existing content... -->
-                <div class="mt-6 mb-6 border-2 border-[#DDD9D9] rounded-[20px] p-4">
-                    <h3 class="font-bold text-lg mb-4 text-center">Order Summary</h3>
-                    <div id="orderDetailsList" class="space-y-3 overflow-y-auto max-h-[320px] pr-4">
-                    </div>
-                    <div class="border-t mt-4 pt-3">
-                        <div class="flex justify-between font-bold">
-                            <span>Sub Total</span>
-                            <span id="orderSubTotal">Rp.0</span>
-                        </div>
-                    </div>
-                    <!-- Tambahkan tombol di bawah summary -->
-                    <div class="mt-6 flex justify-center">
-                        <button id="proceedToPaymentBtn"
-                            class="bg-gradient-to-b from-[#0C4A6E] to-[#0A3D59] text-white font-bold px-8 py-2 rounded-full">
-                            Proceed to Payment
-                        </button>
-                    </div>
-                </div>
-                <!-- ...existing content... -->
+    <!-- Order Summary Section (Keranjang) -->
+    <div id="orderSummarySection" class="flex flex-col h-full w-full">
+        <h3 class="text-black font-bold text-[20px] mb-4 mt-12 px-5 text-center">Your Order</h3>
+        <!-- Scroll hanya di order list -->
+        <div id="orderList" class="order-summary w-full px-5 flex flex-col gap-3 overflow-y-auto"
+            style="max-height: 520px;"></div>
+        <div class="flex-1 mb-6"></div>
+        <!-- Total Cart -->
+        <div id="cart-total"
+            class="w-full flex justify-between items-center font-bold text-[15px] pt-3 border-t mt-2 mb-4 px-6">
+            <span>Total Price:</span>
+            <span id="cart-amount" class="text-[#22668D]">Rp.0</span>
+        </div>
+        <!-- Tombol GO TO ORDER selalu di bawah -->
+        <div id="goToOrderBtn"
+            class="w-full flex flex-col items-center mb-8 relative cursor-pointer pointer-events-none opacity-50">
+            <img src="img/order/buttonorder.png" alt="order-icon" class="w-[194px] h-[49px] relative z-0">
+            <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center z-10 gap-x-10">
+                <img src="img/order/cart.png" alt="cart-icon" class="w-[30px] h-[30px] mr-0">
+                <span class="font-bold font-inter text-[14px] text-center text-white block mr-2">
+                    GO TO ORDER
+                </span>
             </div>
+        </div>
+    </div>
+
+    <!-- Order Form Section -->
+    <div id="formSection" class="hidden w-full min-h-screen flex flex-col bg-white px-8 pt-6 shadow-lg">
+        <div class="flex items-center justify-between mt-4 mb-2 px-2 ">
+            <a href="javascript:void(0);" id="backToOrderBtn" class="flex items-center">
+                <img src="img/order/backbutton.png" alt="back-button" class="w-[30px] h-[30px]" />
+            </a>
+            <h3 class="font-bold font-poppins text-[16px] text-black text-center flex-1 absolute left-0 right-0 mx-auto"
+                style="pointer-events:none;">Deliver to</h3>
+            <div style="width:32px;"></div>
+        </div>
+        <div class="relative flex items-center justify-center my-2">
+            <div class="absolute h-[1.6px] w-[260px] bg-[#000000] z-0"></div>
+            <div class="flex justify-between w-full px-10 z-10">
+                <div class="w-[20px] h-[20px] rounded-full bg-[#FBA304]"></div>
+                <div class="w-[20px] h-[20px] rounded-full bg-[#D9D9D9]"></div>
+                <div class="w-[20px] h-[20px] rounded-full bg-[#D9D9D9]"></div>
+            </div>
+        </div>
+        <h3 class="font-bold font-poppins text-[16px] text-black mt-5 mb-4 text-center">Customer Information
+        </h3>
+        <form id="checkoutForm" action="{{ route('order.store') }}" method="POST">
+            @csrf
+            <div class="flex flex-col gap-4 mb-4">
+                <input type="text" placeholder="Name" name="nama"
+                    class="border px-4 py-2 rounded-full outline-none shadow-sm" />
+                <div class="flex items-center border px-4 py-2 rounded-full shadow-sm">
+                    <span class="text-gray-500 mr-2">(+62)</span>
+                    <input type="number" placeholder="Phone Number" name="no_hp"
+                        class="flex-1 outline-none" />
+                </div>
+                <textarea placeholder="Delivery Address" rows="3" name="alamat"
+                    class="border px-4 py-2 rounded-lg outline-none shadow-sm resize-none"></textarea>
+                <input type="text" placeholder="Note.." name="catatan"
+                    class="border px-4 py-2 rounded-full outline-none shadow-sm" />
+            </div>
+            <input type="hidden" name="cart_json" id="cart_json">
+            <div class="mt-auto mb-8 w-full flex justify-center">
+                <button type="button" id="confirmOrderBtn"
+                    class="bg-gradient-to-b from-[#0C4A6E] to-[#0A3D59] text-white font-bold px-8 py-2 rounded-full">
+                    CONFIRM
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Order Details Section -->
+    <div id="orderDetailsSection"
+        class="hidden w-full min-h-screen flex flex-col bg-white px-8 pt-6 shadow-lg">
+        <!-- Back button, judul, dan status -->
+        <div class="flex items-center justify-between mt-4 mb-2 px-2">
+            <a href="javascript:void(0);" id="backToFormBtn" class="flex items-center">
+                <img src="img/order/backbutton.png" alt="back-button" class="w-[30px] h-[30px]" />
+            </a>
+            <h3 class="font-bold font-poppins text-[16px] text-black text-center flex-1 absolute left-0 right-0 mx-auto"
+                style="pointer-events:none;">Order Summary</h3>
+            <div style="width:32px;"></div>
+        </div>
+        <!-- STATUS STEP (progress bar) -->
+        <div class="relative flex items-center justify-center my-2">
+            <div class="absolute h-[1.6px] w-[260px] bg-[#000000] z-0"></div>
+            <div class="flex justify-between w-full px-10 z-10">
+                <div class="w-[20px] h-[20px] rounded-full bg-[#FBA304]"></div>
+                <div class="w-[20px] h-[20px] rounded-full bg-[#FBA304]"></div>
+                <div class="w-[20px] h-[20px] rounded-full bg-[#D9D9D9]"></div>
+            </div>
+        </div>
+        <div class="mt-6 mb-6 border-2 border-[#DDD9D9] rounded-[20px] p-4">
+            <div id="orderDetailsList" class="space-y-3 overflow-y-auto max-h-[320px] pr-4">
+            </div>
+            <div class="border-t mt-4 pt-3">
+                <div class="flex justify-between font-bold">
+                    <span>Sub Total</span>
+                    <span id="orderSubTotal">Rp.0</span>
+                </div>
+            </div>
+            <div class="mt-6 flex justify-center">
+                <button id="proceedToPaymentBtn"
+                    class="bg-gradient-to-b from-[#0C4A6E] to-[#0A3D59] text-white font-bold px-8 py-2 rounded-full">
+                    Proceed to Payment
+                </button>
+            </div>
+        </div>
+    </div>
+
             <!-- Payment Section -->
             <div id="paymentSection" class="hidden w-full min-h-screen flex flex-col bg-white px-8 pt-6 shadow-lg">
                 <!-- Header dengan tombol back -->
@@ -271,60 +284,54 @@
                     </div>
                 </div>
                 <!-- Pilihan metode pembayaran -->
-                @if($order)
-                <form id="paymentForm" action="{{ route('order.payment', $order->id) }}" method="POST"
-                    enctype="multipart/form-data">
-                    @csrf
-                    <div class="mt-6 mb-6 border-2 border-[#DDD9D9] rounded-[20px] p-4 shadow-md">
-                        <h2 class="font-bold text-lg mb-4">Choice Your Payment Method</h2>
+                <div class="mt-6 mb-6 border-2 border-[#DDD9D9] rounded-[20px] p-4 shadow-md">
+                    <h2 class="font-bold text-lg mb-4">Choice Your Payment Method</h2>
 
-                        <div class="mb-4">
-                            <div class="flex items-center mb-2">
-                                <input type="radio" id="transferMethod" name="paymentMethod" value="transfer"
-                                    checked class="mr-2">
-                                <label for="transferMethod" class="font-medium">Transfer</label>
-                            </div>
-                            <p class="ml-6 text-gray-600">BCA 8890684638 a.n Endah Setyowati</p>
-                        </div>
 
-                        <div class="mb-4">
-                            <div class="flex items-center mb-2">
-                                <input type="radio" id="codMethod" name="paymentMethod" value="cod"
-                                    class="mr-2">
-                                <label for="codMethod" class="font-medium">Cash On Delivery</label>
-                            </div>
+                    <div class="mb-4">
+                        <div class="flex items-center mb-2">
+                            <input type="radio" id="transferMethod" name="paymentMethod" value="transfer" checked
+                                class="mr-2">
+                            <label for="transferMethod" class="font-medium">Transfer</label>
                         </div>
+                        <p class="ml-6 text-gray-600">BCA 8890684638 a.n Endah Setyowati</p>
                     </div>
 
-                    <!-- Upload bukti transfer (hanya muncul ketika pilih transfer) -->
-                    <div class="mb-4" id="uploadProofWrapper">
-                        <label class="font-bold mb-2 block">Upload Your Payment Proof <span
-                                class="text-red-500">*</span></label>
-                        <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center">
-                            <p class="text-gray-500 mb-2 font-poppins font-medium">Drag and drop files here</p>
-                            <p class="text-gray-500 text-sm mb-2 font-poppins font-medium">or</p>
-                            <input type="file" id="paymentProof" name="paymentProof" class="hidden" accept="image/*" required>
-                            <button type="button" onclick="document.getElementById('paymentProof').click()"
-                                class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
-                                Upload a File
-                            </button>
-                        </div>
-                        <p id="proofError" class="text-red-500 text-sm mt-1 hidden">Harap upload bukti transfer</p>
-                    </div>
 
-                    <!-- Tombol complete order -->
-                    <div class="mt-auto mb-8 w-full flex justify-center">
-                        <button id="completeOrderBtn"
-                            class="bg-gradient-to-b from-[#0C4A6E] to-[#0A3D59] text-white font-bold px-8 py-2 rounded-full">
-                            COMPLETE ORDER
+                    <div class="mb-4">
+                        <div class="flex items-center mb-2">
+                            <input type="radio" id="codMethod" name="paymentMethod" value="cod"
+                                class="mr-2">
+                            <label for="codMethod" class="font-medium">Cash On Delivery</label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Upload bukti transfer (hanya muncul ketika pilih transfer) -->
+                <div class="mb-4" id="uploadProofWrapper">
+                    <label class="font-bold mb-2 block">Upload Your Payment Proof <span
+                            class="text-red-500">*</span></label>
+                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center">
+                        <p class="text-gray-500 mb-2 font-poppins font-medium">Drag and drop files here</p>
+                        <p class="text-gray-500 text-sm mb-2 font-poppins font-medium">or</p>
+                        <input type="file" id="paymentProof" class="hidden" accept="image/*" required>
+                        <button type="button" onclick="document.getElementById('paymentProof').click()"
+                            class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
+                            Upload a File
                         </button>
                     </div>
-                </form>
-                @else
-                <div class="text-red-500 text-center font-bold my-8">
-                    Data pesanan tidak ditemukan. Silakan lakukan pemesanan terlebih dahulu.
+                    <p id="proofError" class="text-red-500 text-sm mt-1 hidden">Harap upload bukti transfer</p>
                 </div>
-                @endif
+
+
+                <!-- Tombol complete order -->
+                <div class="mt-auto mb-8 w-full flex justify-center">
+                    <button id="completeOrderBtn"
+                        class="bg-gradient-to-b from-[#0C4A6E] to-[#0A3D59] text-white font-bold px-8 py-2 rounded-full">
+                        COMPLETE ORDER
+                    </button>
+                </div>
             </div>
             <!-- Success Popup -->
             <div id="successPopup"
@@ -339,7 +346,8 @@
             </div>
         </div>
     </div>
-    </div>
+</div>
+
 
 
     <script>
@@ -381,23 +389,23 @@
             showRiceBowl();
         };
 
-        // --- CART LOGIC ---
-        let cart = {};
-        const orderList = document.getElementById('orderList');
+    // --- CART LOGIC ---
+    let cart = {};
+    const orderList = document.getElementById('orderList');
 
-        function formatRupiah(angka) {
-            return 'RP. ' + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-        }
+    function formatRupiah(angka) {
+        return 'Rp. ' + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
 
-        function renderCart() {
-            orderList.innerHTML = '';
-            let total = 0;
-            Object.values(cart).forEach(item => {
-                const itemTotal = item.price * item.qty;
-                total += itemTotal;
-                const div = document.createElement('div');
-                div.className = "flex items-center gap-3 border-b pb-2";
-                div.innerHTML = `
+    function renderCart() {
+        orderList.innerHTML = '';
+        let total = 0;
+        Object.values(cart).forEach(item => {
+            const itemTotal = item.price * item.qty;
+            total += itemTotal;
+            const div = document.createElement('div');
+            div.className = "flex items-center gap-3 border-b pb-2";
+            div.innerHTML = `
                 <div class="flex items-center justify-between bg-white rounded-[20px] shadow p-6 mb-3 w-full relative">
                     <img src="${item.img}" alt="${item.name}" class="w-[80px] h-[80px] rounded-full object-cover border border-gray-300">
                     <div class="flex-1 ml-3">
@@ -418,49 +426,47 @@
                     </div>
                 </div>
             `;
-                orderList.appendChild(div);
-            });
-            document.getElementById('cart-amount').textContent = formatRupiah(total);
+            orderList.appendChild(div);
+        });
+        document.getElementById('cart-amount').textContent = formatRupiah(total);
 
-            // Aktifkan/tidak tombol GO TO ORDER
-            const btn = document.getElementById('goToOrderBtn');
-            if (Object.keys(cart).length > 0) {
-                btn.classList.remove('pointer-events-none', 'opacity-50');
-            } else {
-                btn.classList.add('pointer-events-none', 'opacity-50');
-            }
-
-            document.querySelectorAll('.cart-minus').forEach(btn => {
-                btn.onclick = function() {
-                    const id = this.getAttribute('data-id');
-                    if (cart[id]) {
-                        cart[id].qty--;
-                        if (cart[id].qty <= 0) delete cart[id];
-                        renderCart();
-                    }
-                };
-            });
-            // Event listener tombol plus (jika perlu)
-            document.querySelectorAll('.cart-plus').forEach(btn => {
-                btn.onclick = function() {
-                    const id = this.getAttribute('data-id');
-                    if (cart[id]) {
-                        cart[id].qty++;
-                        renderCart();
-                    }
-                };
-            });
-            // Event listener tombol remove
-            document.querySelectorAll('.remove-item').forEach(btn => {
-                btn.onclick = function() {
-                    const id = this.getAttribute('data-id');
-                    if (cart[id]) {
-                        delete cart[id];
-                        renderCart();
-                    }
-                };
-            });
+        // Aktifkan/tidak tombol GO TO ORDER
+        const btn = document.getElementById('goToOrderBtn');
+        if (Object.keys(cart).length > 0) {
+            btn.classList.remove('pointer-events-none', 'opacity-50');
+        } else {
+            btn.classList.add('pointer-events-none', 'opacity-50');
         }
+
+        document.querySelectorAll('.cart-minus').forEach(btn => {
+            btn.onclick = function() {
+                const id = this.getAttribute('data-id');
+                if (cart[id]) {
+                    cart[id].qty--;
+                    if (cart[id].qty <= 0) delete cart[id];
+                    renderCart();
+                }
+            };
+        });
+        document.querySelectorAll('.cart-plus').forEach(btn => {
+            btn.onclick = function() {
+                const id = this.getAttribute('data-id');
+                if (cart[id]) {
+                    cart[id].qty++;
+                    renderCart();
+                }
+            };
+        });
+        document.querySelectorAll('.remove-item').forEach(btn => {
+            btn.onclick = function() {
+                const id = this.getAttribute('data-id');
+                if (cart[id]) {
+                    delete cart[id];
+                    renderCart();
+                }
+            };
+        });
+    }
         document.getElementById('checkoutForm').addEventListener('submit', function(e) {
             // Ubah cart JS ke array
             let cartArr = Object.values(cart);
@@ -468,40 +474,40 @@
         });
 
         // Event listener untuk tombol plus/minus di menu
-        function setupMenuButtons() {
-            document.querySelectorAll('.plus-button').forEach((plusButton) => {
-                plusButton.onclick = () => {
-                    const menuContainer = plusButton.closest('.relative');
-                    const menuId = menuContainer.getAttribute('data-id'); // tambahkan data-id di HTML
-                    const name = menuContainer.getAttribute('data-name');
-                    const price = parseInt(menuContainer.getAttribute('data-price'));
-                    const img = menuContainer.getAttribute('data-img');
-                    if (!cart[menuId]) {
-                        cart[menuId] = {
-                            menu_id: menuId,
-                            name,
-                            price,
-                            img,
-                            qty: 1
-                        };
-                    } else {
-                        cart[menuId].qty++;
-                    }
+     function setupMenuButtons() {
+        document.querySelectorAll('.plus-button').forEach((plusButton) => {
+            plusButton.onclick = () => {
+                const menuContainer = plusButton.closest('.relative');
+                const menuId = menuContainer.getAttribute('data-id');
+                const name = menuContainer.getAttribute('data-name');
+                const price = parseInt(menuContainer.getAttribute('data-price'));
+                const img = menuContainer.getAttribute('data-img');
+                if (!cart[menuId]) {
+                    cart[menuId] = {
+                        menu_id: menuId,
+                        name,
+                        price,
+                        img,
+                        qty: 1
+                    };
+                } else {
+                    cart[menuId].qty++;
+                }
+                renderCart();
+            };
+        });
+        document.querySelectorAll('.minus-button').forEach((minusButton) => {
+            minusButton.onclick = () => {
+                const menuContainer = minusButton.closest('.relative');
+                const menuId = menuContainer.getAttribute('data-id');
+                if (cart[menuId]) {
+                    cart[menuId].qty--;
+                    if (cart[menuId].qty <= 0) delete cart[menuId];
                     renderCart();
-                };
-            });
-            document.querySelectorAll('.minus-button').forEach((minusButton) => {
-                minusButton.onclick = () => {
-                    const menuContainer = minusButton.closest('.relative');
-                    const menuId = menuContainer.getAttribute('data-id'); // Ganti dari name ke menuId
-                    if (cart[menuId]) {
-                        cart[menuId].qty--;
-                        if (cart[menuId].qty <= 0) delete cart[menuId];
-                        renderCart();
-                    }
-                };
-            });
-        }
+                }
+            };
+        });
+    }
 
         // Jalankan setup saat halaman siap
         document.addEventListener('DOMContentLoaded', () => {
@@ -559,16 +565,12 @@
         });
 
         document.getElementById('confirmOrderBtn').addEventListener('click', function() {
-            // Ambil nilai input
             const name = document.querySelector('input[placeholder="Name"]');
             const phone = document.querySelector('input[placeholder="Phone Number"]');
             const address = document.querySelector('textarea[placeholder="Delivery Address"]');
             let valid = true;
 
-            // Reset error style
             [name, phone, address].forEach(input => input.classList.remove('border-red-500'));
-
-            // Validasi
             if (!name.value.trim()) {
                 name.classList.add('border-red-500');
                 valid = false;
@@ -583,12 +585,10 @@
             }
 
             if (!valid) {
-                // Optionally, tampilkan pesan error global
                 alert('Mohon lengkapi data pemesan!');
                 return;
             }
-
-            // Jika valid, lanjut ke order details
+            // Jika semua valid, lanjutkan ke order details
             renderOrderDetails();
             document.getElementById('formSection').classList.add('hidden');
             document.getElementById('orderDetailsSection').classList.remove('hidden');
@@ -611,9 +611,9 @@
         });
 
         // Back to Order Details
-        document.getElementById('backToOrderDetailsBtn').addEventListener('click', function() {
-            document.getElementById('paymentSection').classList.add('hidden');
-            document.getElementById('orderDetailsSection').classList.remove('hidden');
+        document.getElementById('proceedToPaymentBtn').addEventListener('click', function() {
+            document.getElementById('orderDetailsSection').classList.add('hidden');
+            document.getElementById('paymentSection').classList.remove('hidden');
         });
 
         // Tampilkan/sembunyikan upload proof berdasarkan metode pembayaran
@@ -658,111 +658,9 @@
             document.getElementById('formSection').classList.add('hidden');
             document.getElementById('orderDetailsSection').classList.add('hidden');
             document.getElementById('paymentSection').classList.add('hidden');
-            // Reset cart dan tampilan
+            // Reset cart
             cart = {};
             renderCart();
-        });
-    </script>
-    @if (session('success'))
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Berhasil!',
-                text: '{{ session('success') }}',
-                confirmButtonText: 'Lihat Detail Pesanan'
-            }).then((result) => {
-                // Hilangkan tombol GO TO ORDER
-                const goToOrderBtn = document.getElementById('goToOrderBtn');
-                if (goToOrderBtn) {
-                    goToOrderBtn.style.display = 'none';
-                }
-                // Lanjutkan ke orderDetailsSection
-                showOrderDetailsSection();
-            });
-        </script>
-    @endif
-    @if (session('order_details'))
-        <script>
-            window.orderDetails = @json(session('order_details'));
-        </script>
-    @endif
-    <script>
-        function showOrderDetailsSection() {
-            const section = document.getElementById('orderDetailsSection');
-            const list = document.getElementById('orderDetailsList');
-            const subTotal = document.getElementById('orderSubTotal');
-            if (section && list && subTotal && window.orderDetails) {
-                // Tampilkan section
-                section.classList.remove('hidden');
-                section.scrollIntoView({
-                    behavior: 'smooth'
-                });
-
-                // Render daftar item
-                let html = '';
-                let total = 0;
-                window.orderDetails.items.forEach(item => {
-                    const menuName = item.menu ? item.menu.nama_menu : '';
-                    const price = item.price ?? (item.menu ? item.menu.harga : 0);
-                    const subtotal = price * item.qty;
-                    total += subtotal;
-                    html += `
-                <div class="flex justify-between items-center">
-                    <span>${item.qty} x ${menuName}</span>
-                    <span>Rp${subtotal.toLocaleString('id-ID')}</span>
-                </div>
-            `;
-                });
-                list.innerHTML = html;
-                subTotal.textContent = 'Rp' + total.toLocaleString('id-ID');
-            }
-        }
-        document.addEventListener('DOMContentLoaded', function() {
-            const proceedBtn = document.querySelector('#orderDetailsSection button');
-            if (proceedBtn) {
-                proceedBtn.onclick = function() {
-                    // Sembunyikan orderDetailsSection
-                    document.getElementById('orderDetailsSection').classList.add('hidden');
-                    // Tampilkan paymentSection
-                    const paymentSection = document.getElementById('paymentSection');
-                    if (paymentSection) {
-                        paymentSection.classList.remove('hidden');
-                        paymentSection.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                };
-            }
-        });
-        document.addEventListener('DOMContentLoaded', function() {
-            const transferRadio = document.getElementById('transferMethod');
-            const codRadio = document.getElementById('codMethod');
-            const uploadProofWrapper = document.getElementById('uploadProofWrapper');
-            const paymentProof = document.getElementById('paymentProof');
-            const proofError = document.getElementById('proofError');
-            const form = document.getElementById('paymentForm');
-
-            function toggleProof() {
-                if (transferRadio.checked) {
-                    uploadProofWrapper.style.display = 'block';
-                    paymentProof.required = true;
-                } else {
-                    uploadProofWrapper.style.display = 'none';
-                    paymentProof.required = false;
-                    proofError.classList.add('hidden');
-                }
-            }
-            transferRadio.addEventListener('change', toggleProof);
-            codRadio.addEventListener('change', toggleProof);
-            toggleProof();
-
-            form.addEventListener('submit', function(e) {
-                if (transferRadio.checked && !paymentProof.value) {
-                    proofError.classList.remove('hidden');
-                    e.preventDefault();
-                }
-            });
         });
     </script>
 </body>

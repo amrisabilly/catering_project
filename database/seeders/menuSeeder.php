@@ -58,7 +58,7 @@ class menuSeeder extends Seeder
         [
             'kode_menu'   => 'MN-6',
             'nama_menu'   => 'Telur Puyuh',
-            'keterangan'  => 'Telur Puyuh Sambal - Kangkung - Dumpling',
+            'keterangan'  => 'Telur Puyuh Sambal - Kangkung',
             'harga'       => 20000,
             'gambar'      => 'img/admin/daftarmenu/ordermenu6.png',
             'kategori'    => 'main course',

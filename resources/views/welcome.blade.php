@@ -54,8 +54,8 @@
                     </div>
                     {{-- end button ordernow --}}
                     {{-- kelas kanan --}}
-                    <div class="absolute top-[145px] right-[50px] ">
-                        <img id="ayam-bijan" src="img/ayambijan.png" alt="Ayam Bijan" class="w-[388px] h-[385px]">
+                    <div class="absolute top-[145px] right-[80px] ">
+                        <img id="ayam-bijan" src="img/ayamsaostiram.png" alt="Ayam Saos Tiram" class="w-[488px] h-auto">
                     </div>
                     {{-- end kelas kanan --}}
     
@@ -114,7 +114,7 @@
                                             <path id="menu1-path" d="M132,132 m-100,0 a100,100 0 1,1 200,0 a100,100 0 1,1 -200,0" fill="none" />
                                             <text font-family="Poppins" font-size="14" font-weight="bold" fill="#002E48" letter-spacing="3px">
                                                 <textPath href="#menu1-path" text-anchor="middle" startOffset="25%">
-                                                    AYAM KATSU
+                                                    LELE GORENG
                                                 </textPath>
                                             </text>
                                         </svg>
@@ -122,7 +122,7 @@
                                         {{-- Teks Deskripsi --}}
                                         <div class="absolute top-[80%] left-0 w-full text-center transform -translate-y-[50%] p-5">
                                             <span class="text-black font-semibold font-[Poppins] text-[10px]">
-                                                Ayam Katsu - Sayur Capcay - Pudding
+                                                
                                             </span>
                                             <span class="text-black font-semibold font-[Poppins] text-[20px] mt-[5px] block" style="opacity: 0.82; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);">
                                                 RP. 20.000
@@ -133,14 +133,14 @@
                                     {{-- Item 2 --}}
                                     <div class="relative w-[264px] aspect-[264/300] bg-[#FFFADD] rounded-[50px] p-3 drop-shadow-[1px_14px_8px_rgba(0,0,0,0.25)] overflow-visible mt-10">
                                         {{-- Gambar Menu --}}
-                                        <img src="img/bgmenu1.png" alt="Menu 1" class="w-full h-full object-contain" />
+                                        <img src="img/bgmenu2.png" alt="Menu 2" class="w-full h-full object-contain" />
                                     
                                         {{-- SVG untuk teks melengkung --}}
                                         <svg class="absolute top-[-65px] left-0 w-full h-full z-50 pointer-events-none" viewBox="0 0 264 264">
-                                            <path id="menu1-path" d="M132,132 m-100,0 a100,100 0 1,1 200,0 a100,100 0 1,1 -200,0" fill="none" />
+                                            <path id="menu2-path" d="M132,132 m-100,0 a100,100 0 1,1 200,0 a100,100 0 1,1 -200,0" fill="none" />
                                             <text font-family="Poppins" font-size="14" font-weight="bold" fill="#002E48" letter-spacing="3px">
-                                                <textPath href="#menu1-path" text-anchor="middle" startOffset="25%">
-                                                    AYAM KATSU
+                                                <textPath href="#menu2-path" text-anchor="middle" startOffset="25%">
+                                                    LELE GORENG
                                                 </textPath>
                                             </text>
                                         </svg>
@@ -148,7 +148,7 @@
                                         {{-- Teks Deskripsi --}}
                                         <div class="absolute top-[80%] left-0 w-full text-center transform -translate-y-[50%] p-5">
                                             <span class="text-black font-semibold font-[Poppins] text-[10px]">
-                                                Ayam Katsu - Sayur Capcay - Pudding
+                                                Lele Goreng - Mie Goreng - Pisang
                                             </span>
                                             <span class="text-black font-semibold font-[Poppins] text-[20px] mt-[5px] block" style="opacity: 0.82; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);">
                                                 RP. 20.000
@@ -159,13 +159,13 @@
                                     {{-- Item 3 --}}
                                     <div class="relative w-[264px] aspect-[264/400] bg-[#FFFADD] rounded-[50px] p-3 drop-shadow-[1px_14px_8px_rgba(0,0,0,0.25)] overflow-visible mt-10">
                                         {{-- Gambar Menu --}}
-                                        <img src="img/bgmenu1.png" alt="Menu 1" class="w-full h-full object-contain" />
+                                        <img src="img/bgmenu3.png" alt="Menu 3" class="w-full h-full object-contain" />
                                     
                                         {{-- SVG untuk teks melengkung --}}
                                         <svg class="absolute top-[-65px] left-0 w-full h-full z-50 pointer-events-none" viewBox="0 0 264 264">
-                                            <path id="menu1-path" d="M132,132 m-100,0 a100,100 0 1,1 200,0 a100,100 0 1,1 -200,0" fill="none" />
+                                            <path id="menu3-path" d="M132,132 m-100,0 a100,100 0 1,1 200,0 a100,100 0 1,1 -200,0" fill="none" />
                                             <text font-family="Poppins" font-size="14" font-weight="bold" fill="#002E48" letter-spacing="3px">
-                                                <textPath href="#menu1-path" text-anchor="middle" startOffset="25%">
+                                                <textPath href="#menu3-path" text-anchor="middle" startOffset="25%">
                                                     AYAM KATSU
                                                 </textPath>
                                             </text>
@@ -185,14 +185,14 @@
                                     {{-- Item 4 --}}
                                      <div class="relative w-[264px] aspect-[264/300] bg-[#FFFADD] rounded-[50px] p-3 drop-shadow-[1px_14px_8px_rgba(0,0,0,0.25)] overflow-visible mt-10">
                                         {{-- Gambar Menu --}}
-                                        <img src="img/bgmenu1.png" alt="Menu 1" class="w-full h-full object-contain" />
+                                        <img src="img/bgmenu4.png" alt="Menu 4" class="w-full h-full object-contain" />
     
                                         {{-- SVG untuk teks melengkung --}}
                                         <svg class="absolute top-[-65px] left-0 w-full h-full z-50 pointer-events-none" viewBox="0 0 264 264">
-                                            <path id="menu1-path" d="M132,132 m-100,0 a100,100 0 1,1 200,0 a100,100 0 1,1 -200,0" fill="none" />
+                                            <path id="menu4-path" d="M132,132 m-100,0 a100,100 0 1,1 200,0 a100,100 0 1,1 -200,0" fill="none" />
                                             <text font-family="Poppins" font-size="14" font-weight="bold" fill="#002E48" letter-spacing="3px">
-                                                <textPath href="#menu1-path" text-anchor="middle" startOffset="25%">
-                                                    AYAM KATSU
+                                                <textPath href="#menu4-path" text-anchor="middle" startOffset="25%">
+                                                    AYAM SAOS TIRAM
                                                 </textPath>
                                             </text>
                                         </svg>
@@ -200,7 +200,7 @@
                                         {{-- Teks Deskripsi --}}
                                         <div class="absolute top-[80%] left-0 w-full text-center transform -translate-y-[50%] p-5">
                                             <span class="text-black font-semibold font-[Poppins] text-[10px]">
-                                                Ayam Katsu - Sayur Capcay - Pudding
+                                                Ayam Saos Tiram - Kol Tumis  - Pudding
                                             </span>
                                             <span class="text-black font-semibold font-[Poppins] text-[20px] mt-[5px] block" style="opacity: 0.82; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);">
                                                 RP. 20.000
@@ -210,14 +210,14 @@
                                      {{-- Item 5 --}}
                                      <div class="relative w-[264px] aspect-[264/300] bg-[#FFFADD] rounded-[50px] p-3 drop-shadow-[1px_14px_8px_rgba(0,0,0,0.25)] overflow-visible mt-10">
                                         {{-- Gambar Menu --}}
-                                        <img src="img/bgmenu1.png" alt="Menu 1" class="w-full h-full object-contain" />
+                                        <img src="img/bgmenu5.png" alt="Menu 5" class="w-full h-full object-contain" />
     
                                         {{-- SVG untuk teks melengkung --}}
                                         <svg class="absolute top-[-65px] left-0 w-full h-full z-50 pointer-events-none" viewBox="0 0 264 264">
-                                            <path id="menu1-path" d="M132,132 m-100,0 a100,100 0 1,1 200,0 a100,100 0 1,1 -200,0" fill="none" />
+                                            <path id="menu5-path" d="M132,132 m-100,0 a100,100 0 1,1 200,0 a100,100 0 1,1 -200,0" fill="none" />
                                             <text font-family="Poppins" font-size="14" font-weight="bold" fill="#002E48" letter-spacing="3px">
-                                                <textPath href="#menu1-path" text-anchor="middle" startOffset="25%">
-                                                    AYAM KATSU
+                                                <textPath href="#menu5-path" text-anchor="middle" startOffset="25%">
+                                                    TELUR PUYUH
                                                 </textPath>
                                             </text>
                                         </svg>
@@ -225,7 +225,7 @@
                                         {{-- Teks Deskripsi --}}
                                         <div class="absolute top-[80%] left-0 w-full text-center transform -translate-y-[50%] p-5">
                                             <span class="text-black font-semibold font-[Poppins] text-[10px]">
-                                                Ayam Katsu - Sayur Capcay - Pudding
+                                                Telur Puyuh Sambal - Kangkung
                                             </span>
                                             <span class="text-black font-semibold font-[Poppins] text-[20px] mt-[5px] block" style="opacity: 0.82; text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);">
                                                 RP. 20.000

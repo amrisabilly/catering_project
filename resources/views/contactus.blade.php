@@ -14,8 +14,8 @@
     @include('components.navbar')
 
     <!-- Card Container -->
- <div class="mt-[130px] flex w-[850px] h-[580px] rounded-[20px] "
-     style="background: url('/img/contactus/rectangle.png') center/cover no-repeat;">
+    <div class="mt-[130px] flex w-[850px] h-[580px] rounded-[20px]"
+        style="background: url('/img/contactus/rectangle.png') center/cover no-repeat;">
         <!-- Left: Contact Info -->
         <div class="w-1/2 p-10 flex flex-col justify-between">
             <div>
@@ -58,18 +58,37 @@
         <!-- Right: Form -->
         <div class="w-1/2 p-10 flex flex-col justify-center  rounded-r-[20px]">
             <h2 class="text-[#FFFFFF] text-xl font-bold mb-4">Contact Us</h2>
-            <form class="flex flex-col gap-4">
-                <input type="text" placeholder="Name"
-                    class="w-full p-2 rounded-lg bg-transparent border border-[#FFFFFF] text-[#FFFFFF] placeholder-[#FFFFFF] text-sm focus:outline-none">
-                <input type="text" placeholder="Phone"
-                    class="w-full p-2 rounded-lg bg-transparent border border-[#FFFFFF] text-[#FFFFFF] placeholder-[#FFFFFF] text-sm focus:outline-none">
-                <textarea placeholder="Message"
-                    class="w-full p-2 h-28 rounded-lg bg-transparent border border-[#FFFFFF] text-[#FFFFFF] placeholder-[#FFFFFF] text-sm resize-none focus:outline-none"></textarea>
-            <button type="submit"
-                class="mt-2 bg-white text-[#FFCC70] font-bold py-1 rounded-full w-24 hover:bg-gray-100 text-sm">Send</button>
+            <form id="waForm" class="flex flex-col gap-4">
+                <input type="text" id="name" placeholder="Name"
+                    class="w-full p-2 rounded-lg bg-transparent border border-[#FFFFFF] text-[#FFFFFF] placeholder-[#FFFFFF] text-sm focus:outline-none"
+                    required>
+                <input type="text" id="phone" placeholder="Phone"
+                    class="w-full p-2 rounded-lg bg-transparent border border-[#FFFFFF] text-[#FFFFFF] placeholder-[#FFFFFF] text-sm focus:outline-none"
+                    required>
+                <textarea id="message" placeholder="Message"
+                    class="w-full p-2 h-28 rounded-lg bg-transparent border border-[#FFFFFF] text-[#FFFFFF] placeholder-[#FFFFFF] text-sm resize-none focus:outline-none"
+                    required></textarea>
+                <button type="submit"
+                    class="mt-2 bg-white text-[#FFCC70] font-bold py-1 rounded-full w-24 hover:bg-gray-100 text-sm">Send</button>
             </form>
         </div>
     </div>
-</body>
 
+    <!-- SCRIPT UNTUK WHATSAPP -->
+    <script>
+    document.getElementById('waForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var waNumber = "6281270062782"; // Ganti dengan nomor WA tujuan
+
+        var name = document.getElementById('name').value.trim();
+        var phone = document.getElementById('phone').value.trim();
+        var message = document.getElementById('message').value.trim();
+
+        var text = `Halo, saya ${name} (${phone}).%0A${encodeURIComponent(message)}`;
+        var waLink = `https://wa.me/${waNumber}?text=${text}`;
+
+        window.open(waLink, '_blank');
+    });
+    </script>
+</body>
 </html>
