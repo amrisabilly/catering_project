@@ -206,14 +206,14 @@
                     @csrf
                     <div class="flex flex-col gap-4 mb-4">
                         <input type="text" placeholder="Name" name="nama"
-                            class="border px-4 py-2 rounded-full outline-none shadow-sm" />
+                            class="border px-4 py-2 rounded-full outline-none shadow-sm" required/>
                         <div class="flex items-center border px-4 py-2 rounded-full shadow-sm">
                             <span class="text-gray-500 mr-2">(+62)</span>
                             <input type="number" placeholder="Phone Number" name="no_hp"
-                                class="flex-1 outline-none" />
+                                class="flex-1 outline-none" required/>
                         </div>
                         <textarea placeholder="Delivery Address" rows="3" name="alamat"
-                            class="border px-4 py-2 rounded-lg outline-none shadow-sm resize-none"></textarea>
+                            class="border px-4 py-2 rounded-lg outline-none shadow-sm resize-none" required></textarea>
                         <input type="text" placeholder="Note.." name="catatan"
                             class="border px-4 py-2 rounded-full outline-none shadow-sm" />
                     </div>
@@ -255,9 +255,7 @@
             <div id="paymentSection" class="hidden w-full min-h-screen flex flex-col bg-white px-8 pt-6 shadow-lg">
                 <!-- Header dengan tombol back -->
                 <div class="flex items-center justify-between mt-4 mb-2 px-2">
-                    <a href="javascript:void(0);" id="backToOrderDetailsBtn" class="flex items-center">
-                        <img src="img/order/backbutton.png" alt="back-button" class="w-[30px] h-[30px]" />
-                    </a>
+            
                     <h3 class="font-bold font-poppins text-[16px] text-black text-center flex-1 absolute left-0 right-0 mx-auto"
                         style="pointer-events:none;">Payment</h3>
                     <div style="width:32px;"></div>

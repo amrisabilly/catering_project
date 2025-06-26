@@ -64,7 +64,7 @@ public function store(Request $request)
         'nama' => $request->nama,
         'no_hp' => $request->no_hp,
         'alamat' => $request->alamat,
-        'catatan' => $request->catatan,
+        'catatan' => $request->filled('catatan') ? $request->catatan : '',
         'total_price' => $total,
     ]);
 
