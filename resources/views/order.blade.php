@@ -246,9 +246,9 @@
                     </div>
                 </div>
                 <div class="mt-6 mb-6 border-2 border-[#DDD9D9] rounded-[20px] p-4">
-
-
                     <h3 class="font-bold text-lg mb-4 text-center">Order Summary</h3>
+
+
                     <div id="orderDetailsList" class="space-y-3 overflow-y-auto max-h-[320px] pr-4">
                     </div>
                     <div class="border-t mt-4 pt-3">
@@ -723,12 +723,19 @@
                     const price = item.price ?? (item.menu ? item.menu.harga : 0);
                     const subtotal = price * item.qty;
                     total += subtotal;
+                    const imgSrc = item.menu && item.menu.gambar
+                        ? `/storage/${item.menu.gambar}`
+                        : '/img/admin/datapesanan/menu1.png';
                     html += `
-                <div class="flex justify-between items-center">
-                    <span>${item.qty} x ${menuName}</span>
-                    <span>Rp${subtotal.toLocaleString('id-ID')}</span>
+                <div class="flex items-center gap-4 border-b pb-3">
+                    <img src="${imgSrc}" alt="${menuName}" class="w-[50px] h-[50px] rounded-full object-cover border border-gray-300">
+                    <div class="flex-1">
+                        <div class="font-semibold">${menuName}</div>
+                        <div class="text-sm text-gray-600">Rp${price.toLocaleString('id-ID')} x ${item.qty}</div>
+                    </div>
+                    <div class="font-semibold text-right">Rp${subtotal.toLocaleString('id-ID')}</div>
                 </div>
-            `;
+                `;
                 });
                 list.innerHTML = html;
                 subTotal.textContent = 'Rp' + total.toLocaleString('id-ID');
