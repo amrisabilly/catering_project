@@ -97,9 +97,8 @@
                 class="absolute top-[145px] left-[626px] transform -translate-x-1/2 flex w-[50%] flex-wrap items-start gap-5 mt-2 hidden">
                 @foreach ($riceBowl as $menu)
                     <div class="relative w-[200px] h-[296px] flex justify-center items-center hover-border-2 border-[#FBA304] rounded-xl hover:shadow-[0_0_10px_2px_#FBA304] transition-all duration-300"
-                        data-id="{{ $menu->id }}"
-                        data-name="{{ $menu->nama_menu }}" data-price="{{ $menu->harga }}"
-                        data-img="{{ asset('storage/' . $menu->gambar) }}">
+                        data-id="{{ $menu->id }}" data-name="{{ $menu->nama_menu }}"
+                        data-price="{{ $menu->harga }}" data-img="{{ asset('storage/' . $menu->gambar) }}">
                         {{-- Gambar Menu --}}
                         <img src="{{ asset('storage/' . $menu->gambar) }}" alt="{{ Str::slug($menu->nama_menu) }}"
                             class="w-auto h-[250px] object-cover z-0 mt-5">
@@ -113,9 +112,11 @@
                         <div
                             class="absolute top-[83%] mt-[6px] flex justify-between items-center w-[100px] h-[21px] bg-[#FFFADD] bg-opacity-40 rounded-[20px] z-10">
                             <img src="{{ asset('img/order/minus.png') }}" alt="minus-button"
-                                class="minus-button w-[17px] h-[17px] ml-2 cursor-pointer" data-id="{{ $menu->id }}">
-                                <img src="{{ asset('img/order/plus.png') }}" alt="plus-button"
-                                    class="plus-button w-[17px] h-[17px] mr-2 cursor-pointer" data-id="{{ $menu->id }}">
+                                class="minus-button w-[17px] h-[17px] ml-2 cursor-pointer"
+                                data-id="{{ $menu->id }}">
+                            <img src="{{ asset('img/order/plus.png') }}" alt="plus-button"
+                                class="plus-button w-[17px] h-[17px] mr-2 cursor-pointer"
+                                data-id="{{ $menu->id }}">
                         </div>
                         {{-- SVG untuk teks melengkung --}}
                         <svg class="absolute top-[-50px] left-0 w-full h-[20em] z-50 pointer-events-none"
@@ -206,11 +207,11 @@
                     @csrf
                     <div class="flex flex-col gap-4 mb-4">
                         <input type="text" placeholder="Name" name="nama"
-                            class="border px-4 py-2 rounded-full outline-none shadow-sm" required/>
+                            class="border px-4 py-2 rounded-full outline-none shadow-sm" required />
                         <div class="flex items-center border px-4 py-2 rounded-full shadow-sm">
                             <span class="text-gray-500 mr-2">(+62)</span>
                             <input type="number" placeholder="Phone Number" name="no_hp"
-                                class="flex-1 outline-none" required/>
+                                class="flex-1 outline-none" required />
                         </div>
                         <textarea placeholder="Delivery Address" rows="3" name="alamat"
                             class="border px-4 py-2 rounded-lg outline-none shadow-sm resize-none" required></textarea>
@@ -231,7 +232,19 @@
             <div id="orderDetailsSection"
                 class="hidden w-full min-h-screen flex flex-col bg-white px-8 pt-6 shadow-lg">
                 <!-- ...existing content... -->
+                <div class="relative flex items-center justify-center my-2">
+                    <!-- Line -->
+                    <div class="absolute h-[1.6px] w-[260px] bg-[#000000] z-0"></div>
+                    <!-- Circles -->
+                    <div class="flex justify-between w-full px-10 z-10">
+                        <div class="w-[20px] h-[20px] rounded-full bg-[#FBA304]"></div>
+                        <div class="w-[20px] h-[20px] rounded-full bg-[#FBA304]"></div>
+                        <div class="w-[20px] h-[20px] rounded-full bg-[#D9D9D9]"></div>
+                    </div>
+                </div>
                 <div class="mt-6 mb-6 border-2 border-[#DDD9D9] rounded-[20px] p-4">
+
+
                     <h3 class="font-bold text-lg mb-4 text-center">Order Summary</h3>
                     <div id="orderDetailsList" class="space-y-3 overflow-y-auto max-h-[320px] pr-4">
                     </div>
@@ -255,7 +268,7 @@
             <div id="paymentSection" class="hidden w-full min-h-screen flex flex-col bg-white px-8 pt-6 shadow-lg">
                 <!-- Header dengan tombol back -->
                 <div class="flex items-center justify-between mt-4 mb-2 px-2">
-            
+
                     <h3 class="font-bold font-poppins text-[16px] text-black text-center flex-1 absolute left-0 right-0 mx-auto"
                         style="pointer-events:none;">Payment</h3>
                     <div style="width:32px;"></div>
@@ -269,59 +282,61 @@
                     </div>
                 </div>
                 <!-- Pilihan metode pembayaran -->
-                @if($order)
-                <form id="paymentForm" action="{{ route('order.payment', $order->id) }}" method="POST"
-                    enctype="multipart/form-data">
-                    @csrf
-                    <div class="mt-6 mb-6 border-2 border-[#DDD9D9] rounded-[20px] p-4 shadow-md">
-                        <h2 class="font-bold text-lg mb-4">Choice Your Payment Method</h2>
+                @if ($order)
+                    <form id="paymentForm" action="{{ route('order.payment', $order->id) }}" method="POST"
+                        enctype="multipart/form-data">
+                        @csrf
+                        <div class="mt-6 mb-6 border-2 border-[#DDD9D9] rounded-[20px] p-4 shadow-md">
+                            <h2 class="font-bold text-lg mb-4">Choice Your Payment Method</h2>
 
-                        <div class="mb-4">
-                            <div class="flex items-center mb-2">
-                                <input type="radio" id="transferMethod" name="paymentMethod" value="transfer"
-                                    checked class="mr-2">
-                                <label for="transferMethod" class="font-medium">Transfer</label>
+                            <div class="mb-4">
+                                <div class="flex items-center mb-2">
+                                    <input type="radio" id="transferMethod" name="paymentMethod" value="transfer"
+                                        checked class="mr-2">
+                                    <label for="transferMethod" class="font-medium">Transfer</label>
+                                </div>
+                                <p class="ml-6 text-gray-600">BCA 8890684638 a.n Endah Setyowati</p>
                             </div>
-                            <p class="ml-6 text-gray-600">BCA 8890684638 a.n Endah Setyowati</p>
+
+                            <div class="mb-4">
+                                <div class="flex items-center mb-2">
+                                    <input type="radio" id="codMethod" name="paymentMethod" value="cod"
+                                        class="mr-2">
+                                    <label for="codMethod" class="font-medium">Cash On Delivery</label>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="mb-4">
-                            <div class="flex items-center mb-2">
-                                <input type="radio" id="codMethod" name="paymentMethod" value="cod"
-                                    class="mr-2">
-                                <label for="codMethod" class="font-medium">Cash On Delivery</label>
+                        <!-- Upload bukti transfer (hanya muncul ketika pilih transfer) -->
+                        <div class="mb-4" id="uploadProofWrapper">
+                            <label class="font-bold mb-2 block">Upload Your Payment Proof <span
+                                    class="text-red-500">*</span></label>
+                            <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center">
+                                <p class="text-gray-500 mb-2 font-poppins font-medium">Drag and drop files here</p>
+                                <p class="text-gray-500 text-sm mb-2 font-poppins font-medium">or</p>
+                                <input type="file" id="paymentProof" name="paymentProof" class="hidden"
+                                    accept="image/*" required>
+                                <button type="button" onclick="document.getElementById('paymentProof').click()"
+                                    class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
+                                    Upload a File
+                                </button>
                             </div>
+                            <p id="proofError" class="text-red-500 text-sm mt-1 hidden">Harap upload bukti transfer
+                            </p>
                         </div>
-                    </div>
 
-                    <!-- Upload bukti transfer (hanya muncul ketika pilih transfer) -->
-                    <div class="mb-4" id="uploadProofWrapper">
-                        <label class="font-bold mb-2 block">Upload Your Payment Proof <span
-                                class="text-red-500">*</span></label>
-                        <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center">
-                            <p class="text-gray-500 mb-2 font-poppins font-medium">Drag and drop files here</p>
-                            <p class="text-gray-500 text-sm mb-2 font-poppins font-medium">or</p>
-                            <input type="file" id="paymentProof" name="paymentProof" class="hidden" accept="image/*" required>
-                            <button type="button" onclick="document.getElementById('paymentProof').click()"
-                                class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium">
-                                Upload a File
+                        <!-- Tombol complete order -->
+                        <div class="mt-auto mb-8 w-full flex justify-center">
+                            <button id="completeOrderBtn"
+                                class="bg-gradient-to-b from-[#0C4A6E] to-[#0A3D59] text-white font-bold px-8 py-2 rounded-full">
+                                COMPLETE ORDER
                             </button>
                         </div>
-                        <p id="proofError" class="text-red-500 text-sm mt-1 hidden">Harap upload bukti transfer</p>
-                    </div>
-
-                    <!-- Tombol complete order -->
-                    <div class="mt-auto mb-8 w-full flex justify-center">
-                        <button id="completeOrderBtn"
-                            class="bg-gradient-to-b from-[#0C4A6E] to-[#0A3D59] text-white font-bold px-8 py-2 rounded-full">
-                            COMPLETE ORDER
-                        </button>
-                    </div>
-                </form>
+                    </form>
                 @else
-                <div class="text-red-500 text-center font-bold my-8">
-                    Data pesanan tidak ditemukan. Silakan lakukan pemesanan terlebih dahulu.
-                </div>
+                    <div class="text-red-500 text-center font-bold my-8">
+                        Data pesanan tidak ditemukan. Silakan lakukan pemesanan terlebih dahulu.
+                    </div>
                 @endif
             </div>
             <!-- Success Popup -->

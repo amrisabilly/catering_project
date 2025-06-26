@@ -46,6 +46,38 @@ class ControllerDataSiswa
         return redirect()->route('admin.datasiswa')->with('success', 'Data siswa berhasil ditambahkan.');
     }
 
+    public function storeLanding(Request $request)
+    {
+        $request->validate([
+            'full_name' => 'required|string|max:255',
+            'phone_number' => 'required|string|max:20',
+            'class' => 'required|string|max:50',
+            'gender' => 'required|in:Male,Female',
+            'menu_price' => 'required|string|max:20',
+            'allergies' => 'nullable|string|max:255',
+            'additional_note' => 'nullable|string|max:255',
+        ]);
+
+        // Generate ID Student otomatis
+        $lastStudent = ModelDataSiswa::orderBy('id', 'desc')->first();
+        $lastId = $lastStudent ? intval(str_replace('SIS-', '', $lastStudent->id_student)) : 0;
+        $newIdStudent = 'SIS-' . ($lastId + 1);
+
+        // Simpan ke database
+        ModelDataSiswa::create([
+            'id_student' => $newIdStudent,
+            'full_name' => $request->full_name,
+            'phone_number' => $request->phone_number,
+            'class' => $request->class,
+            'gender' => $request->gender,
+            'menu_price' => $request->menu_price,
+            'allergies' => $request->allergies,
+            'additional_note' => $request->additional_note,
+        ]);
+
+        return redirect()->route('formdaftar')->with('success', 'Data siswa berhasil ditambahkan.');
+    }
+
     // Simpan perubahan data
     public function update(Request $request, $id)
     {

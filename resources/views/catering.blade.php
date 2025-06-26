@@ -28,8 +28,12 @@
             <img src="img/catering/formpelanggan.png" alt="form-pelanggan" class="w-auto h-[200px] mb-[10px]">
         </a>
 
-        <!-- Rectangle 2 -->
-        <a href="/formizin" class="w-[326px] h-[350px] bg-[#002E48] rounded-[20px] shadow-md flex flex-col items-center justify-center hover:bg-[#8ECDDD] transition duration-300">
+        <!-- Rectangle 2: Langsung ke WhatsApp -->
+        <a 
+            href="https://wa.me/6281270062782?text=Assalamualaikum Bu%2C%20saya%20mau%20konfirmasi%20izin%20atau%20sakit%20untuk%20anak%20saya%2C%20[isi%20nama%20di%20sini]%20di%20kelas%20[isi%20kelas%20di%20sini]%20terimakasih bu."
+            target="_blank"
+            class="w-[326px] h-[350px] bg-[#002E48] rounded-[20px] shadow-md flex flex-col items-center justify-center hover:bg-[#8ECDDD] transition duration-300"
+        >
             <span class="text-white font-bold text-[18px]">KONFIRMASI IZIN/SAKIT</span>
             <img src="img/catering/formizin.png" alt="form-izin" class="w-auto h-[220px] mb-[5px] mt-2">
         </a>

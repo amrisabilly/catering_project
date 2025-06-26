@@ -27,9 +27,10 @@ Route::get('/catering', function () {
     return view('catering');
 });
 
+
 Route::get('/formdaftar', function () {
     return view('formdaftar');
-});
+})->name('formdaftar');
 
 Route::get('/aboutus', function () {
     return view('aboutus');
@@ -100,6 +101,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // Data Siswa Management
     Route::get('/datasiswa', [ControllerDataSiswa::class, 'index'])->name('datasiswa');
     Route::post('/datasiswa', [ControllerDataSiswa::class, 'store'])->name('datasiswa.store');
+    Route::post('/datasiswaa', [ControllerDataSiswa::class, 'storeLanding'])->name('datasiswa.store.landing');
     Route::put('/datasiswa/{id}', [ControllerDataSiswa::class, 'update'])->name('datasiswa.update');
     Route::delete('/datasiswa/{id}', [ControllerDataSiswa::class, 'destroy'])->name('datasiswa.destroy');
 
