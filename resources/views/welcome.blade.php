@@ -11,7 +11,7 @@
     html {
         scroll-behavior: smooth
     }
-    /* Animasi untuk gambar Ayam Bijan */
+    /* Animasi untuk gambar Ayam Saos Tiram */
     @keyframes rotate {
             0% {
                 transform: rotate(0deg);
@@ -20,7 +20,7 @@
                 transform: rotate(360deg);
             }
         }
-        #ayam-bijan {
+        #ayam-saos-tiram {
             animation: rotate 20s linear infinite; /* Durasi 20 detik, linear, berulang tanpa henti */
         }
 </style>
@@ -55,7 +55,7 @@
                     {{-- end button ordernow --}}
                     {{-- kelas kanan --}}
                     <div class="absolute top-[145px] right-[80px] ">
-                        <img id="ayam-bijan" src="img/ayamsaostiram.png" alt="Ayam Saos Tiram" class="w-[488px] h-auto">
+                        <img id="ayam-saos-tiram" src="img/ayamsaostiram.png" alt="Ayam Saos Tiram" class="w-[420px] h-auto">
                     </div>
                     {{-- end kelas kanan --}}
     
