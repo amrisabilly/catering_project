@@ -6,6 +6,7 @@
   <title>Laporan Data Siswa</title>
   <script src="//unpkg.com/alpinejs" defer></script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/png" href="{{ asset('img/logocatering.png') }}">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     body, * {
