@@ -663,6 +663,108 @@
             renderCart();
         });
     </script>
+    @if (session('success'))
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: '{{ session('success') }}',
+                confirmButtonText: 'Lihat Detail Pesanan'
+            }).then((result) => {
+                // Hilangkan tombol GO TO ORDER
+                const goToOrderBtn = document.getElementById('goToOrderBtn');
+                if (goToOrderBtn) {
+                    goToOrderBtn.style.display = 'none';
+                }
+                // Lanjutkan ke orderDetailsSection
+                showOrderDetailsSection();
+            });
+        </script>
+    @endif
+    @if (session('order_details'))
+        <script>
+            window.orderDetails = @json(session('order_details'));
+        </script>
+    @endif
+    <script>
+        function showOrderDetailsSection() {
+            const section = document.getElementById('orderDetailsSection');
+            const list = document.getElementById('orderDetailsList');
+            const subTotal = document.getElementById('orderSubTotal');
+            if (section && list && subTotal && window.orderDetails) {
+                // Tampilkan section
+                section.classList.remove('hidden');
+                section.scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                // Render daftar item
+                let html = '';
+                let total = 0;
+                window.orderDetails.items.forEach(item => {
+                    const menuName = item.menu ? item.menu.nama_menu : '';
+                    const price = item.price ?? (item.menu ? item.menu.harga : 0);
+                    const subtotal = price * item.qty;
+                    total += subtotal;
+                    html += `
+                <div class="flex justify-between items-center">
+                    <span>${item.qty} x ${menuName}</span>
+                    <span>Rp${subtotal.toLocaleString('id-ID')}</span>
+                </div>
+            `;
+                });
+                list.innerHTML = html;
+                subTotal.textContent = 'Rp' + total.toLocaleString('id-ID');
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const proceedBtn = document.querySelector('#orderDetailsSection button');
+            if (proceedBtn) {
+                proceedBtn.onclick = function() {
+                    // Sembunyikan orderDetailsSection
+                    document.getElementById('orderDetailsSection').classList.add('hidden');
+                    // Tampilkan paymentSection
+                    const paymentSection = document.getElementById('paymentSection');
+                    if (paymentSection) {
+                        paymentSection.classList.remove('hidden');
+                        paymentSection.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                };
+            }
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            const transferRadio = document.getElementById('transferMethod');
+            const codRadio = document.getElementById('codMethod');
+            const uploadProofWrapper = document.getElementById('uploadProofWrapper');
+            const paymentProof = document.getElementById('paymentProof');
+            const proofError = document.getElementById('proofError');
+            const form = document.getElementById('paymentForm');
+
+            function toggleProof() {
+                if (transferRadio.checked) {
+                    uploadProofWrapper.style.display = 'block';
+                    paymentProof.required = true;
+                } else {
+                    uploadProofWrapper.style.display = 'none';
+                    paymentProof.required = false;
+                    proofError.classList.add('hidden');
+                }
+            }
+            transferRadio.addEventListener('change', toggleProof);
+            codRadio.addEventListener('change', toggleProof);
+            toggleProof();
+
+            form.addEventListener('submit', function(e) {
+                if (transferRadio.checked && !paymentProof.value) {
+                    proofError.classList.remove('hidden');
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
