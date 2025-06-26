@@ -156,27 +156,30 @@
             class="w-[439px] min-h-screen bg-white shadow-lg flex flex-col items-center justify-start sticky top-0 right-0 h-screen">
             <!-- Order Summary Section -->
             <div id="orderSummarySection" class="flex flex-col h-full w-full">
-                <h3 class="text-black font-bold text-[20px] mb-4 mt-12 px-5 text-center">Your Order</h3>
                 <!-- Scroll hanya di order list -->
+                <h3 class="text-black font-bold text-[20px] mb-4 mt-12 px-5 text-center">Your Order</h3>
                 <div id="orderList" class="order-summary w-full px-5 flex flex-col gap-3 overflow-y-auto"
                     style="max-height: 520px;"></div>
                 <!-- Spacer agar tombol tetap di bawah -->
                 <div class="flex-1 mb-6"></div>
                 <!-- Total Cart -->
-                <div id="cart-total"
-                    class="w-full flex justify-between items-center font-bold text-[15px] pt-3 border-t mt-2 mb-4 px-6">
-                    <span>Total Price:</span>
-                    <span id="cart-amount" class="text-[#22668D]">Rp.0</span>
-                </div>
+
                 <!-- Tombol GO TO ORDER selalu di bawah -->
                 <div id="goToOrderBtn"
-                    class="w-full flex flex-col items-center mb-8 relative cursor-pointer pointer-events-none opacity-50">
-                    <img src="img/order/buttonorder.png" alt="order-icon" class="w-[194px] h-[49px] relative z-0">
-                    <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center z-10 gap-x-10">
-                        <img src="img/order/cart.png" alt="cart-icon" class="w-[30px] h-[30px] mr-0">
-                        <span class="font-bold font-inter text-[14px] text-center text-white block mr-2">
-                            GO TO ORDER
-                        </span>
+                    class="flex flex-col items-center justify-center">
+                    <div id="cart-total"
+                        class="w-full flex justify-between items-center font-bold text-[15px] pt-3 border-t mt-2 mb-4 px-6">
+                        <span>Total Price:</span>
+                        <span id="cart-amount" class="text-[#22668D]">Rp.0</span>
+                    </div>
+                    <div class="w-full flex flex-col items-center mb-8 relative cursor-pointer">
+                        <img src="img/order/buttonorder.png" alt="order-icon" class="w-[194px] h-[49px] relative z-0">
+                        <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center z-10 gap-x-10">
+                            <img src="img/order/cart.png" alt="cart-icon" class="w-[30px] h-[30px] mr-0">
+                            <span class="font-bold font-inter text-[14px] text-center text-white block mr-2">
+                                GO TO ORDER
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
