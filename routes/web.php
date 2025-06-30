@@ -10,9 +10,9 @@ use App\Http\Controllers\ControllerLanding;
 use App\Http\Controllers\OrderController;
 
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('welcome');
 
 // Route::get('/order', function () {
 //     return view('order');
